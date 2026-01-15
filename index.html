@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ASSCLOWN ELEVATORS - Professional Vertical Transportation Chaos | Est. 1969</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The world's premier provider of haunted elevator installations, clown-certified maintenance, and OSHA violation consulting. Union Local 404 approved.">
+  <meta name="keywords" content="elevator, clown, assclown, OSHA violations, haunted elevator, vertical transportation, clown grease, Union Local 404">
+  <meta property="og:title" content="ASSCLOWN ELEVATORS - Where Safety is Optional">
+  <meta property="og:description" content="Professional clown-operated vertical transportation since 1969. Now offering premium OSHA violation packages.">
+  <meta property="og:image" content="https://assclownelevators.com/og-image.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Bangers&family=VT323&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>
+    :root {
+      --clown-red: #ff1744;
+      --clown-yellow: #ffc300;
+      --clown-purple: #a512ff;
+      --clown-cyan: #08f7fe;
+      --clown-pink: #ff6ec7;
+      --shaft-dark: #0a0a0a;
+      --panel-bg: #1a1a1a;
+      --warning-orange: #ff6b00;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: linear-gradient(180deg, #0a0a0a 0%, #1a0a1a 50%, #0a1a1a 100%);
+      color: #fffbe8;
+      font-family: 'VT323', monospace;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ===== HEADER & NAVIGATION ===== */
+    .top-banner {
+      background: repeating-linear-gradient(
+        45deg,
+        var(--clown-yellow),
+        var(--clown-yellow) 10px,
+        #000 10px,
+        #000 20px
+      );
+      padding: 8px;
+      text-align: center;
+      font-family: 'Bangers', cursive;
+      font-size: 1.1em;
+      color: #000;
+      animation: bannerSlide 20s linear infinite;
+    }
+
+    @keyframes bannerSlide {
+      0% { background-position: 0 0; }
+      100% { background-position: 100px 0; }
+    }
+
+    .top-banner span {
+      background: #000;
+      color: var(--clown-yellow);
+      padding: 2px 12px;
+      border-radius: 4px;
+    }
+
+    nav {
+      background: rgba(10, 10, 10, 0.95);
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 3px solid var(--clown-purple);
+      backdrop-filter: blur(10px);
+    }
+
+    .logo {
+      font-family: 'Creepster', cursive;
+      font-size: 2em;
+      color: var(--clown-yellow);
+      text-shadow: 3px 3px 0 var(--clown-purple), -2px -2px 0 var(--clown-cyan);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .logo:hover {
+      transform: rotate(-5deg) scale(1.1);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--clown-cyan);
+      text-decoration: none;
+      font-size: 1.3em;
+      font-family: 'Bangers', cursive;
+      letter-spacing: 1px;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--clown-pink);
+      text-shadow: 0 0 20px var(--clown-pink);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: var(--clown-pink);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .cta-button {
+      background: linear-gradient(135deg, var(--clown-red), var(--clown-purple));
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-family: 'Bangers', cursive;
+      font-size: 1.2em;
+      letter-spacing: 2px;
+      cursor: pointer;
+      border-radius: 50px;
+      transition: all 0.3s;
+      box-shadow: 0 0 20px rgba(255, 23, 68, 0.5);
+    }
+
+    .cta-button:hover {
+      transform: scale(1.1) rotate(3deg);
+      box-shadow: 0 0 40px rgba(255, 23, 68, 0.8);
+    }
+
+    /* ===== HERO SECTION WITH INVERSE KINEMATICS ELEVATOR ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffc300' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .hero-title {
+      font-family: 'Creepster', cursive;
+      font-size: clamp(3em, 10vw, 8em);
+      text-align: center;
+      color: var(--clown-yellow);
+      text-shadow:
+        4px 4px 0 var(--clown-purple),
+        8px 8px 0 var(--clown-red),
+        0 0 50px var(--clown-yellow);
+      animation: titlePulse 2s ease-in-out infinite alternate;
+      margin-bottom: 20px;
+    }
+
+    @keyframes titlePulse {
+      0% { transform: scale(1) rotate(-1deg); }
+      100% { transform: scale(1.02) rotate(1deg); }
+    }
+
+    .hero-subtitle {
+      font-family: 'Permanent Marker', cursive;
+      font-size: clamp(1.2em, 3vw, 2em);
+      color: var(--clown-cyan);
+      text-align: center;
+      margin-bottom: 40px;
+      text-shadow: 0 0 20px var(--clown-cyan);
+    }
+
+    /* INVERSE KINEMATICS ELEVATOR SIMULATION */
+    .elevator-simulation {
+      width: 100%;
+      max-width: 900px;
+      height: 500px;
+      position: relative;
+      margin: 30px 0;
+    }
+
+    #elevatorCanvas {
+      width: 100%;
+      height: 100%;
+      border: 4px solid var(--clown-purple);
+      border-radius: 20px;
+      background: linear-gradient(180deg, #0f0f0f 0%, #1a0a1a 100%);
+      box-shadow:
+        0 0 30px var(--clown-purple),
+        inset 0 0 50px rgba(165, 18, 255, 0.2);
+    }
+
+    .elevator-controls {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .floor-btn {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: 3px solid var(--clown-yellow);
+      background: var(--shaft-dark);
+      color: var(--clown-yellow);
+      font-family: 'Bangers', cursive;
+      font-size: 1.5em;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .floor-btn:hover {
+      background: var(--clown-yellow);
+      color: #000;
+      transform: scale(1.1);
+      box-shadow: 0 0 30px var(--clown-yellow);
+    }
+
+    .floor-btn.active {
+      background: var(--clown-red);
+      border-color: var(--clown-red);
+      animation: btnPulse 0.5s ease-in-out infinite;
+    }
+
+    @keyframes btnPulse {
+      0%, 100% { box-shadow: 0 0 20px var(--clown-red); }
+      50% { box-shadow: 0 0 40px var(--clown-red); }
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 40px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .stat-box {
+      background: rgba(26, 26, 26, 0.9);
+      border: 2px solid var(--clown-purple);
+      padding: 25px 35px;
+      border-radius: 15px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .stat-box:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(165, 18, 255, 0.4);
+    }
+
+    .stat-number {
+      font-family: 'Creepster', cursive;
+      font-size: 3em;
+      color: var(--clown-yellow);
+      display: block;
+    }
+
+    .stat-label {
+      font-family: 'Bangers', cursive;
+      font-size: 1.2em;
+      color: var(--clown-cyan);
+      letter-spacing: 2px;
+    }
+
+    /* ===== SERVICES SECTION ===== */
+    .services {
+      padding: 80px 20px;
+      background: linear-gradient(180deg, transparent, rgba(165, 18, 255, 0.1), transparent);
+    }
+
+    .section-title {
+      font-family: 'Creepster', cursive;
+      font-size: clamp(2em, 5vw, 4em);
+      text-align: center;
+      color: var(--clown-yellow);
+      text-shadow: 3px 3px 0 var(--clown-purple);
+      margin-bottom: 50px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .service-card {
+      background: linear-gradient(135deg, var(--panel-bg), #0a0a1a);
+      border: 3px solid var(--clown-purple);
+      border-radius: 20px;
+      padding: 30px;
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255, 195, 0, 0.1), transparent);
+      transform: rotate(45deg);
+      transition: all 0.5s;
+      opacity: 0;
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+      animation: shimmer 1.5s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) rotate(45deg); }
+    }
+
+    .service-card:hover {
+      transform: translateY(-15px) rotate(1deg);
+      border-color: var(--clown-yellow);
+      box-shadow: 0 20px 50px rgba(255, 195, 0, 0.3);
+    }
+
+    .service-icon {
+      font-size: 4em;
+      margin-bottom: 20px;
+      display: block;
+      animation: iconBounce 2s ease-in-out infinite;
+    }
+
+    @keyframes iconBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .service-card h3 {
+      font-family: 'Bangers', cursive;
+      font-size: 1.8em;
+      color: var(--clown-yellow);
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+    }
+
+    .service-card p {
+      color: #ccc;
+      line-height: 1.8;
+      font-size: 1.2em;
+    }
+
+    .service-price {
+      font-family: 'Creepster', cursive;
+      font-size: 2em;
+      color: var(--clown-pink);
+      margin-top: 20px;
+      display: block;
+    }
+
+    /* ===== PRICING SECTION ===== */
+    .pricing {
+      padding: 80px 20px;
+      background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23a512ff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      background: var(--panel-bg);
+      border: 3px solid var(--clown-cyan);
+      border-radius: 25px;
+      padding: 40px 30px;
+      text-align: center;
+      position: relative;
+      transition: all 0.4s;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--clown-yellow);
+      transform: scale(1.05);
+      box-shadow: 0 0 50px rgba(255, 195, 0, 0.4);
+    }
+
+    .pricing-card.featured::before {
+      content: 'MOST DANGEROUS';
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--clown-red);
+      color: white;
+      padding: 8px 25px;
+      border-radius: 20px;
+      font-family: 'Bangers', cursive;
+      font-size: 1em;
+      letter-spacing: 2px;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(8, 247, 254, 0.3);
+    }
+
+    .pricing-card.featured:hover {
+      transform: scale(1.05) translateY(-10px);
+    }
+
+    .pricing-tier {
+      font-family: 'Creepster', cursive;
+      font-size: 2.5em;
+      color: var(--clown-yellow);
+      margin-bottom: 10px;
+    }
+
+    .pricing-amount {
+      font-family: 'Bangers', cursive;
+      font-size: 4em;
+      color: var(--clown-pink);
+      margin: 20px 0;
+    }
+
+    .pricing-amount span {
+      font-size: 0.4em;
+      color: #888;
+    }
+
+    .pricing-features {
+      list-style: none;
+      text-align: left;
+      margin: 30px 0;
+    }
+
+    .pricing-features li {
+      padding: 12px 0;
+      border-bottom: 1px dashed rgba(255, 195, 0, 0.3);
+      font-size: 1.2em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .pricing-features li::before {
+      content: '🤡';
+      font-size: 1.2em;
+    }
+
+    .pricing-btn {
+      width: 100%;
+      padding: 18px 30px;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Bangers', cursive;
+      font-size: 1.5em;
+      letter-spacing: 3px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .pricing-btn.primary {
+      background: linear-gradient(135deg, var(--clown-red), var(--clown-purple));
+      color: white;
+    }
+
+    .pricing-btn.secondary {
+      background: transparent;
+      border: 3px solid var(--clown-cyan);
+      color: var(--clown-cyan);
+    }
+
+    .pricing-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px rgba(255, 23, 68, 0.5);
+    }
+
+    /* ===== OSHA VIOLATIONS MARKETPLACE ===== */
+    .violations {
+      padding: 80px 20px;
+      background: linear-gradient(180deg, rgba(255, 23, 68, 0.1), transparent, rgba(165, 18, 255, 0.1));
+    }
+
+    .violations-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .violation-card {
+      background: var(--panel-bg);
+      border: 3px dashed var(--warning-orange);
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 20px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 20px;
+      align-items: center;
+      transition: all 0.3s;
+    }
+
+    .violation-card:hover {
+      transform: translateX(10px);
+      border-style: solid;
+      box-shadow: -10px 0 30px rgba(255, 107, 0, 0.3);
+    }
+
+    .violation-code {
+      background: var(--clown-red);
+      color: white;
+      padding: 15px 20px;
+      border-radius: 10px;
+      font-family: 'Bangers', cursive;
+      font-size: 1.3em;
+      text-align: center;
+      min-width: 100px;
+    }
+
+    .violation-details h4 {
+      font-family: 'Permanent Marker', cursive;
+      font-size: 1.5em;
+      color: var(--clown-yellow);
+      margin-bottom: 8px;
+    }
+
+    .violation-details p {
+      color: #aaa;
+      font-size: 1.1em;
+    }
+
+    .violation-price {
+      font-family: 'Creepster', cursive;
+      font-size: 2em;
+      color: var(--clown-pink);
+      white-space: nowrap;
+    }
+
+    /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      padding: 80px 20px;
+      background: var(--shaft-dark);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 30px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .testimonial-card {
+      background: linear-gradient(135deg, var(--panel-bg), rgba(165, 18, 255, 0.1));
+      border: 2px solid var(--clown-purple);
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '"';
+      font-family: 'Creepster', cursive;
+      font-size: 8em;
+      color: var(--clown-yellow);
+      opacity: 0.2;
+      position: absolute;
+      top: -20px;
+      left: 20px;
+    }
+
+    .testimonial-text {
+      font-size: 1.3em;
+      line-height: 1.8;
+      color: #ddd;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .testimonial-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      font-size: 2.5em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--clown-purple);
+    }
+
+    .testimonial-info h5 {
+      font-family: 'Bangers', cursive;
+      font-size: 1.3em;
+      color: var(--clown-yellow);
+    }
+
+    .testimonial-info p {
+      color: var(--clown-cyan);
+      font-size: 1em;
+    }
+
+    .stars {
+      color: var(--clown-yellow);
+      font-size: 1.3em;
+      margin-top: 5px;
+    }
+
+    /* ===== CERTIFICATION SECTION ===== */
+    .certification {
+      padding: 80px 20px;
+      background: linear-gradient(180deg, transparent, rgba(8, 247, 254, 0.1), transparent);
+      text-align: center;
+    }
+
+    .cert-badge {
+      width: 300px;
+      height: 300px;
+      margin: 0 auto 40px;
+      position: relative;
+      animation: badgeFloat 3s ease-in-out infinite;
+    }
+
+    @keyframes badgeFloat {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    .cert-badge-inner {
+      width: 100%;
+      height: 100%;
+      border: 8px solid var(--clown-yellow);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle, var(--panel-bg), var(--shaft-dark));
+      box-shadow:
+        0 0 50px var(--clown-yellow),
+        inset 0 0 30px rgba(255, 195, 0, 0.3);
+    }
+
+    .cert-icon {
+      font-size: 5em;
+      margin-bottom: 10px;
+    }
+
+    .cert-title {
+      font-family: 'Creepster', cursive;
+      font-size: 1.5em;
+      color: var(--clown-yellow);
+    }
+
+    .cert-subtitle {
+      font-family: 'Bangers', cursive;
+      color: var(--clown-cyan);
+    }
+
+    .cert-features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 40px auto;
+    }
+
+    .cert-feature {
+      background: var(--panel-bg);
+      border: 2px solid var(--clown-purple);
+      border-radius: 15px;
+      padding: 30px;
+      transition: all 0.3s;
+    }
+
+    .cert-feature:hover {
+      transform: scale(1.05);
+      border-color: var(--clown-yellow);
+    }
+
+    .cert-feature h4 {
+      font-family: 'Bangers', cursive;
+      font-size: 1.5em;
+      color: var(--clown-yellow);
+      margin-bottom: 10px;
+    }
+
+    /* ===== LIVE OSHA VIOLATION COUNTER ===== */
+    .violation-counter {
+      background: var(--clown-red);
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .counter-title {
+      font-family: 'Creepster', cursive;
+      font-size: 2.5em;
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .counter-display {
+      font-family: 'VT323', monospace;
+      font-size: 5em;
+      color: var(--clown-yellow);
+      text-shadow: 0 0 30px var(--clown-yellow);
+      animation: counterPulse 0.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes counterPulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.05); }
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #050505;
+      padding: 60px 20px;
+      border-top: 3px solid var(--clown-purple);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+    }
+
+    .footer-section h4 {
+      font-family: 'Bangers', cursive;
+      font-size: 1.5em;
+      color: var(--clown-yellow);
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+    }
+
+    .footer-section p, .footer-section li {
+      color: #888;
+      line-height: 2;
+      font-size: 1.1em;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section a {
+      color: var(--clown-cyan);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-section a:hover {
+      color: var(--clown-pink);
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-link {
+      width: 50px;
+      height: 50px;
+      border: 2px solid var(--clown-purple);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      transition: all 0.3s;
+    }
+
+    .social-link:hover {
+      background: var(--clown-purple);
+      transform: rotate(360deg);
+    }
+
+    .copyright {
+      text-align: center;
+      margin-top: 40px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 195, 0, 0.2);
+      color: #666;
+      font-size: 1.1em;
+    }
+
+    .copyright span {
+      color: var(--clown-yellow);
+    }
+
+    /* ===== PAYMENT MODAL ===== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal {
+      background: var(--panel-bg);
+      border: 3px solid var(--clown-yellow);
+      border-radius: 25px;
+      padding: 40px;
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+      animation: modalPop 0.3s ease-out;
+    }
+
+    @keyframes modalPop {
+      0% { transform: scale(0.8); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 2em;
+      color: var(--clown-red);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .modal-close:hover {
+      transform: rotate(90deg);
+    }
+
+    .modal h2 {
+      font-family: 'Creepster', cursive;
+      font-size: 2.5em;
+      color: var(--clown-yellow);
+      margin-bottom: 20px;
+    }
+
+    .modal p {
+      color: #aaa;
+      margin-bottom: 30px;
+      font-size: 1.2em;
+    }
+
+    #card-element {
+      background: var(--shaft-dark);
+      border: 2px solid var(--clown-purple);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    #card-errors {
+      color: var(--clown-red);
+      margin-bottom: 15px;
+      font-size: 1.1em;
+    }
+
+    /* ===== FLOATING CLOWNS ===== */
+    .floating-clown {
+      position: fixed;
+      font-size: 3em;
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.6;
+      animation: floatAround 20s linear infinite;
+    }
+
+    @keyframes floatAround {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      25% { transform: translate(100px, -100px) rotate(90deg); }
+      50% { transform: translate(200px, 0) rotate(180deg); }
+      75% { transform: translate(100px, 100px) rotate(270deg); }
+      100% { transform: translate(0, 0) rotate(360deg); }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .elevator-controls {
+        position: relative;
+        right: auto;
+        top: auto;
+        transform: none;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 20px;
+      }
+
+      .violation-card {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-stats {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+
+    /* ===== NEWSLETTER ===== */
+    .newsletter {
+      background: linear-gradient(135deg, var(--clown-purple), var(--clown-red));
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .newsletter h3 {
+      font-family: 'Creepster', cursive;
+      font-size: 2.5em;
+      color: white;
+      margin-bottom: 15px;
+    }
+
+    .newsletter p {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.3em;
+      margin-bottom: 30px;
+    }
+
+    .newsletter-form {
+      display: flex;
+      gap: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      min-width: 250px;
+      padding: 18px 25px;
+      border: none;
+      border-radius: 50px;
+      font-family: 'VT323', monospace;
+      font-size: 1.3em;
+      background: white;
+    }
+
+    .newsletter-form button {
+      padding: 18px 35px;
+      background: var(--clown-yellow);
+      color: #000;
+      border: none;
+      border-radius: 50px;
+      font-family: 'Bangers', cursive;
+      font-size: 1.3em;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .newsletter-form button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 30px rgba(255, 195, 0, 0.5);
+    }
+
+    /* ===== AD SPACE ===== */
+    .ad-banner {
+      background: linear-gradient(90deg, var(--shaft-dark), var(--panel-bg));
+      border: 2px dashed var(--clown-cyan);
+      padding: 20px;
+      text-align: center;
+      margin: 20px auto;
+      max-width: 728px;
+      border-radius: 10px;
+    }
+
+    .ad-banner p {
+      color: var(--clown-cyan);
+      font-size: 1.1em;
+    }
+
+    .ad-banner span {
+      font-family: 'Bangers', cursive;
+      color: var(--clown-yellow);
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating clowns for atmosphere -->
+  <div class="floating-clown" style="top: 10%; left: 5%;">🤡</div>
+  <div class="floating-clown" style="top: 30%; right: 3%; animation-delay: -5s;">🛗</div>
+  <div class="floating-clown" style="top: 60%; left: 8%; animation-delay: -10s;">🦝</div>
+  <div class="floating-clown" style="bottom: 20%; right: 10%; animation-delay: -15s;">🎪</div>
+
+  <!-- Top Banner -->
+  <div class="top-banner">
+    <span>🚨 BREAKING: Inspector Phil's ghost spotted in Sub-basement 13B! All clown technicians report immediately! 🚨</span>
+  </div>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="logo" onclick="window.scrollTo(0, 0)">🤡 ASSCLOWN ELEVATORS 🛗</div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#violations">Violations</a></li>
+      <li><a href="#certification">Get Certified</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+    </ul>
+    <button class="cta-button" onclick="openModal()">SUBSCRIBE NOW</button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1 class="hero-title">ASSCLOWN<br>ELEVATORS</h1>
+    <p class="hero-subtitle">Professional Vertical Transportation Chaos Since 1969</p>
+
+    <!-- Inverse Kinematics Elevator Simulation -->
+    <div class="elevator-simulation">
+      <canvas id="elevatorCanvas"></canvas>
+      <div class="elevator-controls">
+        <button class="floor-btn" data-floor="5">5</button>
+        <button class="floor-btn" data-floor="4">4</button>
+        <button class="floor-btn" data-floor="3">3</button>
+        <button class="floor-btn" data-floor="2">2</button>
+        <button class="floor-btn" data-floor="1">1</button>
+        <button class="floor-btn" data-floor="B">B</button>
+        <button class="floor-btn" data-floor="?">??</button>
+      </div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat-box">
+        <span class="stat-number" data-count="13847">0</span>
+        <span class="stat-label">OSHA Violations</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-number" data-count="404">0</span>
+        <span class="stat-label">Union Members</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-number" data-count="69">0</span>
+        <span class="stat-label">Haunted Shafts</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-number" data-count="0">0</span>
+        <span class="stat-label">Safety Inspections Passed</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ad Banner -->
+  <div class="ad-banner">
+    <p><span>YOUR AD HERE</span> - Reach thousands of desperate elevator maintenance technicians!</p>
+    <p>Contact: advertising@assclownelevators.com | $69.69/month</p>
+  </div>
+
+  <!-- Services Section -->
+  <section id="services" class="services">
+    <h2 class="section-title">OUR CLOWN-CERTIFIED SERVICES</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">🔧</span>
+        <h3>CLOWN GREASE MAINTENANCE</h3>
+        <p>Our team of certified clowns will lubricate your elevator cables with our proprietary ClownGrease™ formula. Side effects may include spontaneous honking and unexplained laughter.</p>
+        <span class="service-price">$420/shaft</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">👻</span>
+        <h3>GHOST INSPECTOR CONSULTATIONS</h3>
+        <p>Can't pass OSHA? Our resident ghost inspector Rick will haunt your elevator paperwork until it "accidentally" approves itself. Results not guaranteed in dimensions 4 and above.</p>
+        <span class="service-price">$666/séance</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🦝</span>
+        <h3>RACCOON INSTALLATION</h3>
+        <p>Every premium elevator needs 8-12 raccoons in the overhead panel. Our trained raccoons provide natural pest control and emergency snack distribution.</p>
+        <span class="service-price">$55/raccoon</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🎵</span>
+        <h3>CURSED MUSIC UPGRADES</h3>
+        <p>Tired of boring elevator music? We'll install our proprietary sound system that only plays "Entry of the Gladiators" on loop. Forever. Even when off.</p>
+        <span class="service-price">$333/eternity</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">⚡</span>
+        <h3>SIDEWAYS MOTION ENABLING</h3>
+        <p>Your elevator wasn't MEANT to only go up and down. Unlock diagonal, sideways, and interdimensional movement with our patented PhysicsBreaker™ system.</p>
+        <span class="service-price">$808/axis</span>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🔔</span>
+        <h3>RICK ALERT SYSTEM</h3>
+        <p>Replace your emergency bell with a direct connection to Rick, who will yell "DING!" personally for every floor. Premium users get Rick's disappointed sighs included.</p>
+        <span class="service-price">$42/yell</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="pricing">
+    <h2 class="section-title">CHOOSE YOUR DESCENT INTO CHAOS</h2>
+    <div class="pricing-grid">
+      <div class="pricing-card">
+        <h3 class="pricing-tier">APPRENTICE CLOWN</h3>
+        <div class="pricing-amount">$6.99<span>/month</span></div>
+        <ul class="pricing-features">
+          <li>Access to 3 haunted shafts</li>
+          <li>Basic clown grease tutorials</li>
+          <li>Email support (Rick responds... eventually)</li>
+          <li>One free raccoon photo</li>
+          <li>Certificate of Questionable Achievement</li>
+        </ul>
+        <button class="pricing-btn secondary" onclick="subscribe('apprentice')">JOIN THE CIRCUS</button>
+      </div>
+      <div class="pricing-card featured">
+        <h3 class="pricing-tier">MASTER ASSCLOWN</h3>
+        <div class="pricing-amount">$42.69<span>/month</span></div>
+        <ul class="pricing-features">
+          <li>Unlimited shaft access</li>
+          <li>Advanced inverse kinematics training</li>
+          <li>Direct Rick hotline (he might answer)</li>
+          <li>Adopt-a-Raccoon program</li>
+          <li>OSHA violation templates</li>
+          <li>Clown nose button replacement kit</li>
+          <li>Ghost mode tutorial</li>
+        </ul>
+        <button class="pricing-btn primary" onclick="subscribe('master')">BECOME THE ASSCLOWN</button>
+      </div>
+      <div class="pricing-card">
+        <h3 class="pricing-tier">UNION LOCAL 404</h3>
+        <div class="pricing-amount">$404<span>/month</span></div>
+        <ul class="pricing-features">
+          <li>Everything in Master tier</li>
+          <li>Union membership card (slightly haunted)</li>
+          <li>Priority séance scheduling</li>
+          <li>Personal raccoon squad (8 units)</li>
+          <li>Duct tape infinity subscription</li>
+          <li>Sub-basement 13A access key</li>
+          <li>Inspector Phil's cursed clipboard</li>
+        </ul>
+        <button class="pricing-btn secondary" onclick="subscribe('union')">SELL YOUR SOUL</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- OSHA Violations Marketplace -->
+  <section id="violations" class="violations">
+    <h2 class="section-title">OSHA VIOLATION MARKETPLACE</h2>
+    <p style="text-align: center; color: var(--clown-cyan); font-size: 1.3em; margin-bottom: 40px;">
+      Collect 'em all! Trade with friends! Frame them on your wall!
+    </p>
+    <div class="violations-container">
+      <div class="violation-card">
+        <div class="violation-code">13-BOZO</div>
+        <div class="violation-details">
+          <h4>Clown Grease in Pulley System</h4>
+          <p>Critical levels of clown grease detected. Squeaking increased by 420%. Honking imminent.</p>
+        </div>
+        <div class="violation-price">$29.99</div>
+      </div>
+      <div class="violation-card">
+        <div class="violation-code">404-RICK</div>
+        <div class="violation-details">
+          <h4>Ghost Operating Safety Equipment</h4>
+          <p>Paranormal entity "Rick" found managing all safety overrides. Unclear if certified.</p>
+        </div>
+        <div class="violation-price">$66.66</div>
+      </div>
+      <div class="violation-card">
+        <div class="violation-code">69-NICE</div>
+        <div class="violation-details">
+          <h4>Sideways Motion in Vertical Shaft</h4>
+          <p>Elevator exhibiting movement on unauthorized axes. Physics department confused and concerned.</p>
+        </div>
+        <div class="violation-price">$42.00</div>
+      </div>
+      <div class="violation-card">
+        <div class="violation-code">88-TAPE</div>
+        <div class="violation-details">
+          <h4>Structural Integrity: Duct Tape Only</h4>
+          <p>Load-bearing components consist entirely of duct tape and "vibes." Replacement material: more tape.</p>
+        </div>
+        <div class="violation-price">$19.99</div>
+      </div>
+      <div class="violation-card">
+        <div class="violation-code">13-TRASH</div>
+        <div class="violation-details">
+          <h4>Raccoon Infestation (8+ Units)</h4>
+          <p>Overhead panel contains a thriving raccoon community. They have formed a union. We cannot evict.</p>
+        </div>
+        <div class="violation-price">$55.00</div>
+      </div>
+      <div class="violation-card">
+        <div class="violation-code">∞-HONK</div>
+        <div class="violation-details">
+          <h4>Buttons Replaced with Clown Noses</h4>
+          <p>All floor selection buttons emit honking sounds. Floor 13 nose screams. Users report existential dread.</p>
+        </div>
+        <div class="violation-price">$33.33</div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 40px;">
+      <button class="cta-button" onclick="buyAllViolations()">BUY ALL VIOLATIONS - $199.99</button>
+    </div>
+  </section>
+
+  <!-- Live Violation Counter -->
+  <div class="violation-counter">
+    <h3 class="counter-title">LIVE OSHA VIOLATIONS GENERATED TODAY</h3>
+    <div class="counter-display" id="liveCounter">0</div>
+  </div>
+
+  <!-- Certification Section -->
+  <section id="certification" class="certification">
+    <h2 class="section-title">GET ASSCLOWN CERTIFIED</h2>
+    <div class="cert-badge">
+      <div class="cert-badge-inner">
+        <span class="cert-icon">🎓🤡</span>
+        <span class="cert-title">CERTIFIED ASSCLOWN</span>
+        <span class="cert-subtitle">Elevator Technician</span>
+      </div>
+    </div>
+    <p style="max-width: 800px; margin: 0 auto 40px; font-size: 1.4em; color: #aaa;">
+      Join the elite ranks of professionals who have completed our rigorous 69-minute certification program.
+      Learn to ignore safety protocols like a true professional!
+    </p>
+    <div class="cert-features">
+      <div class="cert-feature">
+        <h4>🔧 Module 1: Clown Grease Basics</h4>
+        <p>Master the art of over-lubrication. Learn why more grease = more better.</p>
+      </div>
+      <div class="cert-feature">
+        <h4>👻 Module 2: Ghost Communication</h4>
+        <p>Essential séance techniques for negotiating with elevator spirits.</p>
+      </div>
+      <div class="cert-feature">
+        <h4>🦝 Module 3: Raccoon Management</h4>
+        <p>How to maintain healthy relationships with your overhead panel tenants.</p>
+      </div>
+      <div class="cert-feature">
+        <h4>📋 Module 4: OSHA Avoidance</h4>
+        <p>Creative paperwork solutions and inspector distraction techniques.</p>
+      </div>
+    </div>
+    <button class="cta-button" style="font-size: 1.5em; padding: 20px 50px;" onclick="startCertification()">
+      START CERTIFICATION - $169.69
+    </button>
+  </section>
+
+  <!-- Testimonials -->
+  <section id="testimonials" class="testimonials">
+    <h2 class="section-title">WHAT OUR CLOWNS SAY</h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <p class="testimonial-text">"Ever since I got my Assclown certification, I've been promoted three times. Sure, the elevators I maintain go sideways now, but the passengers seem to enjoy the surprise. 10/10 would violate OSHA again."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">🤡</div>
+          <div class="testimonial-info">
+            <h5>Bobo McHonkface</h5>
+            <p>Senior Clown Technician</p>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"The raccoons installed in my elevator shaft have increased productivity by 404%. They handle all maintenance now. I just feed them and avoid eye contact. This is the future of vertical transportation."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">🦝</div>
+          <div class="testimonial-info">
+            <h5>Raccoon Supervisor #7</h5>
+            <p>Formerly Human, Now Unclear</p>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"I've been dead for 47 years but the Assclown team still pays me for inspections. Very flexible work-from-beyond arrangements. The duct tape structural solutions are... creative. I approve everything now."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">👻</div>
+          <div class="testimonial-info">
+            <h5>Inspector Rick (Deceased)</h5>
+            <p>Paranormal Safety Consultant</p>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <p class="testimonial-text">"My elevator now plays 'Entry of the Gladiators' 24/7, even when unplugged. The residents have formed a support group. The clowns say this is 'working as intended.' I believe them. I have no choice."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">🏢</div>
+          <div class="testimonial-info">
+            <h5>Building Manager Steve</h5>
+            <p>Sleep-Deprived Professional</p>
+            <div class="stars">⭐⭐⭐⭐⭐</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <h3>JOIN THE CLOWN NEWSLETTER</h3>
+    <p>Get weekly OSHA violations, raccoon updates, and ghost sightings delivered straight to your inbox!</p>
+    <form class="newsletter-form" onsubmit="submitNewsletter(event)">
+      <input type="email" placeholder="your.email@clown.com" required>
+      <button type="submit">SUBSCRIBE</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>ASSCLOWN ELEVATORS</h4>
+        <p>Professional vertical transportation chaos since 1969. Union Local 404 approved. Haunted by Inspector Rick. Maintained by raccoons.</p>
+        <div class="social-links">
+          <a href="#" class="social-link">📘</a>
+          <a href="#" class="social-link">🐦</a>
+          <a href="#" class="social-link">📸</a>
+          <a href="#" class="social-link">👻</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>SERVICES</h4>
+        <ul>
+          <li><a href="#services">Clown Grease Maintenance</a></li>
+          <li><a href="#services">Ghost Inspector Consultations</a></li>
+          <li><a href="#services">Raccoon Installation</a></li>
+          <li><a href="#services">Sideways Motion Enabling</a></li>
+          <li><a href="#violations">OSHA Violation NFTs</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>RESOURCES</h4>
+        <ul>
+          <li><a href="#certification">Certification Program</a></li>
+          <li><a href="#">Clown Grease MSDS</a></li>
+          <li><a href="#">Raccoon Care Guide</a></li>
+          <li><a href="#">Ghost Summoning 101</a></li>
+          <li><a href="#">Duct Tape Best Practices</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>CONTACT</h4>
+        <ul>
+          <li>📍 Sub-basement 13A, Clown Dimension</li>
+          <li>📞 1-800-HONK-HELP</li>
+          <li>📧 help@assclownelevators.com</li>
+          <li>👻 Séance: Tuesdays at midnight</li>
+          <li>🦝 Raccoon HR: Available 24/7</li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>© 2069 Assclown Elevators, LLC. All rights reversed. <span>Union Local 404</span> approved.</p>
+      <p>Warning: This site may cause sideways movement, existential dread, and spontaneous honking.</p>
+      <p style="margin-top: 10px; font-size: 0.9em;">
+        <a href="#">Privacy Policy</a> | <a href="#">Terms of Chaos</a> | <a href="#">OSHA Complaints</a> | <a href="#">Ghost Waiver</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Payment Modal -->
+  <div class="modal-overlay" id="paymentModal">
+    <div class="modal">
+      <span class="modal-close" onclick="closeModal()">×</span>
+      <h2>🤡 SUBSCRIBE TO CHAOS 🤡</h2>
+      <p id="modalPlan">You're about to join the greatest elevator circus on earth!</p>
+      <div id="card-element"></div>
+      <div id="card-errors" role="alert"></div>
+      <button class="pricing-btn primary" style="width: 100%;" onclick="processPayment()">
+        COMPLETE SACRIFICE
+      </button>
+      <p style="font-size: 0.9em; color: #666; margin-top: 15px; text-align: center;">
+        By subscribing, you agree to our Terms of Chaos and acknowledge that your soul may be used for elevator-related purposes.
+      </p>
+    </div>
+  </div>
+
+  <script>
+    // ===== INVERSE KINEMATICS ELEVATOR SIMULATION =====
+    const canvas = document.getElementById('elevatorCanvas');
+    const ctx = canvas.getContext('2d');
+
+    // Set canvas size
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * window.devicePixelRatio;
+      canvas.height = rect.height * window.devicePixelRatio;
+      ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Elevator state
+    const elevator = {
+      x: 100,
+      y: 250,
+      targetY: 250,
+      width: 80,
+      height: 100,
+      velocity: 0,
+      acceleration: 0,
+      cables: [],
+      clowns: [],
+      shake: 0,
+      sidewaysOffset: 0,
+      currentFloor: 1
+    };
+
+    // Floor positions
+    const floors = {
+      '5': 50,
+      '4': 100,
+      '3': 180,
+      '2': 260,
+      '1': 340,
+      'B': 420,
+      '?': Math.random() * 400 + 50
+    };
+
+    // IK Chain for cables
+    class IKSegment {
+      constructor(x, y, length, angle) {
+        this.x = x;
+        this.y = y;
+        this.length = length;
+        this.angle = angle;
+      }
+
+      follow(targetX, targetY) {
+        const dx = targetX - this.x;
+        const dy = targetY - this.y;
+        this.angle = Math.atan2(dy, dx);
+        this.x = targetX - Math.cos(this.angle) * this.length;
+        this.y = targetY - Math.sin(this.angle) * this.length;
+      }
+
+      getEndX() {
+        return this.x + Math.cos(this.angle) * this.length;
+      }
+
+      getEndY() {
+        return this.y + Math.sin(this.angle) * this.length;
+      }
+    }
+
+    // Create cable segments (IK chain)
+    function createCables() {
+      const cables = [];
+      const numSegments = 8;
+      const segmentLength = 30;
+
+      for (let i = 0; i < numSegments; i++) {
+        cables.push(new IKSegment(
+          elevator.x + elevator.width / 2,
+          i * segmentLength,
+          segmentLength,
+          Math.PI / 2
+        ));
+      }
+      return cables;
+    }
+
+    elevator.cables = createCables();
+
+    // Create clowns in elevator
+    function createClowns() {
+      return [
+        { x: 15, y: 60, emoji: '🤡', bobOffset: 0 },
+        { x: 45, y: 65, emoji: '🦝', bobOffset: Math.PI / 2 },
+        { x: 30, y: 40, emoji: '👻', bobOffset: Math.PI }
+      ];
+    }
+
+    elevator.clowns = createClowns();
+
+    // Solve IK chain
+    function solveIK(cables, targetX, targetY) {
+      // Forward reaching (from end to base)
+      cables[cables.length - 1].follow(targetX, targetY);
+      for (let i = cables.length - 2; i >= 0; i--) {
+        cables[i].follow(cables[i + 1].x, cables[i + 1].y);
+      }
+
+      // Backward reaching (from base to end)
+      cables[0].x = elevator.x + elevator.width / 2;
+      cables[0].y = 0;
+      for (let i = 1; i < cables.length; i++) {
+        const prev = cables[i - 1];
+        cables[i].x = prev.getEndX();
+        cables[i].y = prev.getEndY();
+      }
+    }
+
+    // Animation loop
+    let time = 0;
+    function animate() {
+      const displayWidth = canvas.width / window.devicePixelRatio;
+      const displayHeight = canvas.height / window.devicePixelRatio;
+
+      ctx.clearRect(0, 0, displayWidth, displayHeight);
+      time += 0.02;
+
+      // Update elevator physics
+      const dy = elevator.targetY - elevator.y;
+      elevator.acceleration = dy * 0.02;
+      elevator.velocity += elevator.acceleration;
+      elevator.velocity *= 0.92; // Damping
+      elevator.y += elevator.velocity;
+
+      // Add shake effect when moving fast
+      if (Math.abs(elevator.velocity) > 1) {
+        elevator.shake = Math.sin(time * 20) * Math.abs(elevator.velocity) * 2;
+      } else {
+        elevator.shake *= 0.9;
+      }
+
+      // Sideways wobble
+      elevator.sidewaysOffset = Math.sin(time * 3) * 5;
+
+      // Draw shaft background
+      ctx.fillStyle = '#0a0a0a';
+      ctx.fillRect(60, 0, 140, displayHeight);
+
+      // Draw floor indicators
+      ctx.font = '16px VT323';
+      ctx.fillStyle = '#ffc300';
+      Object.entries(floors).forEach(([floor, y]) => {
+        ctx.fillText(`─── ${floor} ───`, 70, y + 5);
+      });
+
+      // Solve IK for cables
+      const elevatorTop = elevator.y + elevator.shake;
+      solveIK(elevator.cables, elevator.x + elevator.width / 2 + elevator.sidewaysOffset, elevatorTop);
+
+      // Draw cables with glow
+      ctx.shadowColor = '#ffc300';
+      ctx.shadowBlur = 10;
+      ctx.strokeStyle = '#ffc300';
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.moveTo(elevator.x + elevator.width / 2, 0);
+      elevator.cables.forEach(segment => {
+        ctx.lineTo(segment.getEndX(), segment.getEndY());
+      });
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      // Draw secondary cable
+      ctx.strokeStyle = '#a512ff';
+      ctx.lineWidth = 2;
+      ctx.setLineDash([5, 5]);
+      ctx.beginPath();
+      ctx.moveTo(elevator.x + elevator.width / 2 + 20, 0);
+      ctx.lineTo(elevator.x + elevator.width / 2 + 20 + elevator.sidewaysOffset, elevatorTop);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Draw elevator car
+      const carX = elevator.x + elevator.sidewaysOffset;
+      const carY = elevator.y + elevator.shake;
+
+      // Elevator glow
+      ctx.shadowColor = '#08f7fe';
+      ctx.shadowBlur = 20;
+
+      // Main car body
+      ctx.fillStyle = '#1a1a1a';
+      ctx.strokeStyle = '#08f7fe';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.roundRect(carX, carY, elevator.width, elevator.height, 10);
+      ctx.fill();
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      // Elevator doors
+      const doorGap = 2 + Math.sin(time * 2) * 2;
+      ctx.fillStyle = '#2a2a2a';
+      ctx.fillRect(carX + 10, carY + 10, elevator.width / 2 - 12 - doorGap, elevator.height - 20);
+      ctx.fillRect(carX + elevator.width / 2 + doorGap, carY + 10, elevator.width / 2 - 12 - doorGap, elevator.height - 20);
+
+      // Draw clowns
+      ctx.font = '24px Arial';
+      elevator.clowns.forEach(clown => {
+        const bobY = Math.sin(time * 3 + clown.bobOffset) * 3;
+        ctx.fillText(clown.emoji, carX + clown.x, carY + clown.y + bobY);
+      });
+
+      // Floor indicator on elevator
+      ctx.font = '20px Bangers';
+      ctx.fillStyle = '#ffc300';
+      ctx.textAlign = 'center';
+      ctx.fillText(elevator.currentFloor, carX + elevator.width / 2, carY - 10);
+      ctx.textAlign = 'left';
+
+      // Draw sparks when moving
+      if (Math.abs(elevator.velocity) > 2) {
+        for (let i = 0; i < 5; i++) {
+          ctx.fillStyle = `hsl(${Math.random() * 60 + 30}, 100%, 50%)`;
+          ctx.beginPath();
+          ctx.arc(
+            carX + Math.random() * elevator.width,
+            carY + Math.random() * elevator.height,
+            Math.random() * 3 + 1,
+            0,
+            Math.PI * 2
+          );
+          ctx.fill();
+        }
+      }
+
+      // Draw "?" dimensional portal effect
+      if (elevator.currentFloor === '?') {
+        ctx.save();
+        ctx.globalAlpha = 0.3 + Math.sin(time * 5) * 0.2;
+        const gradient = ctx.createRadialGradient(
+          carX + elevator.width / 2, carY + elevator.height / 2, 0,
+          carX + elevator.width / 2, carY + elevator.height / 2, 100
+        );
+        gradient.addColorStop(0, '#a512ff');
+        gradient.addColorStop(0.5, '#08f7fe');
+        gradient.addColorStop(1, 'transparent');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, displayWidth, displayHeight);
+        ctx.restore();
+      }
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+
+    // Floor button handlers
+    document.querySelectorAll('.floor-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const floor = btn.dataset.floor;
+        elevator.targetY = floors[floor];
+        elevator.currentFloor = floor;
+
+        // Update button states
+        document.querySelectorAll('.floor-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Special effect for mystery floor
+        if (floor === '?') {
+          floors['?'] = Math.random() * 400 + 50;
+          elevator.targetY = floors['?'];
+        }
+      });
+    });
+
+    // ===== COUNTER ANIMATION =====
+    function animateCounters() {
+      document.querySelectorAll('.stat-number').forEach(counter => {
+        const target = parseInt(counter.dataset.count);
+        const duration = 2000;
+        const start = 0;
+        const startTime = performance.now();
+
+        function updateCounter(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const easeOut = 1 - Math.pow(1 - progress, 3);
+          counter.textContent = Math.floor(start + (target - start) * easeOut).toLocaleString();
+
+          if (progress < 1) {
+            requestAnimationFrame(updateCounter);
+          }
+        }
+
+        requestAnimationFrame(updateCounter);
+      });
+    }
+
+    // ===== LIVE VIOLATION COUNTER =====
+    let violationCount = 13847;
+    function updateLiveCounter() {
+      violationCount += Math.floor(Math.random() * 3);
+      document.getElementById('liveCounter').textContent = violationCount.toLocaleString();
+    }
+    setInterval(updateLiveCounter, 1000);
+
+    // ===== MODAL FUNCTIONS =====
+    let selectedPlan = '';
+    const planPrices = {
+      apprentice: '$6.99/month',
+      master: '$42.69/month',
+      union: '$404/month'
+    };
+
+    function openModal() {
+      document.getElementById('paymentModal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('paymentModal').classList.remove('active');
+    }
+
+    function subscribe(plan) {
+      selectedPlan = plan;
+      document.getElementById('modalPlan').innerHTML = `
+        <strong>${plan.toUpperCase()}</strong> tier selected<br>
+        Price: <span style="color: var(--clown-pink)">${planPrices[plan]}</span>
+      `;
+      openModal();
+    }
+
+    function processPayment() {
+      alert('🤡 HONK HONK! Payment processing is currently haunted. Please try again during the next full moon, or sacrifice a rubber chicken to Inspector Rick. 🤡\n\nActual payment integration coming soon!');
+      closeModal();
+    }
+
+    function buyAllViolations() {
+      alert('🎉 CONGRATULATIONS! You\'ve attempted to purchase the entire OSHA Violation Collection!\n\nUnfortunately, our payment raccoons are on strike. Please slide $199.99 under Sub-basement 13A\'s door and wait for a ghost confirmation.');
+    }
+
+    function startCertification() {
+      alert('🎓 CERTIFICATION INITIATED!\n\nModule 1: Clown Grease Basics\nLoading... Error: Too much grease in the system.\n\nPlease return when the raccoons have finished debugging the curriculum.');
+    }
+
+    function submitNewsletter(e) {
+      e.preventDefault();
+      const email = e.target.querySelector('input').value;
+      alert(`🤡 Welcome to the Clown Newsletter, ${email}!\n\nYou'll receive:\n- Weekly OSHA violations\n- Raccoon horoscopes\n- Ghost sighting reports\n- Duct tape coupons\n\nFirst issue arrives at midnight (your time zone may vary in the clown dimension).`);
+      e.target.reset();
+    }
+
+    // ===== INTERSECTION OBSERVER FOR ANIMATIONS =====
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          if (entry.target.classList.contains('hero-stats')) {
+            animateCounters();
+          }
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.service-card, .pricing-card, .testimonial-card, .violation-card, .hero-stats').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'all 0.6s ease-out';
+      observer.observe(el);
+    });
+
+    // ===== HONK ON LOGO CLICK =====
+    document.querySelector('.logo').addEventListener('click', () => {
+      const honk = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2teleVEUBDeI4f/cqWI3EB5k1f/soFUoBRZU5v/4mj4nAxNT8//zjTAdAhFZ+f/xgCUXARFk/v/sfxkSAQ9x//7lfBQNAQ2A//7gdA0JAQWP//7WbAYFAACf//7NYgAAAAAA');
+      // honk.play();
+    });
+
+    // ===== KONAMI CODE EASTER EGG =====
+    let konamiCode = [];
+    const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+
+    document.addEventListener('keydown', (e) => {
+      konamiCode.push(e.key);
+      konamiCode = konamiCode.slice(-10);
+
+      if (konamiCode.join('') === konamiSequence.join('')) {
+        document.body.style.animation = 'konamiChaos 0.5s infinite';
+        setTimeout(() => {
+          document.body.style.animation = '';
+          alert('🤡🦝👻 CLOWN MODE ACTIVATED! 🤡🦝👻\n\nAll elevators now move in RANDOM directions!\nRaccoons have been promoted to management!\nInspector Rick is pleased!');
+        }, 2000);
+      }
+    });
+
+    // Add CSS for konami effect
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes konamiChaos {
+        0% { filter: hue-rotate(0deg); }
+        25% { filter: hue-rotate(90deg); }
+        50% { filter: hue-rotate(180deg); }
+        75% { filter: hue-rotate(270deg); }
+        100% { filter: hue-rotate(360deg); }
+      }
+    `;
+    document.head.appendChild(style);
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      // Start on floor 1
+      document.querySelector('[data-floor="1"]').classList.add('active');
+    });
+  </script>
+
+  <!-- Google AdSense Placeholder -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
+</body>
+</html>
