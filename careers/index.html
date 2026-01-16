@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Careers at Assclown Elevators | Join the Chaos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Join Assclown Elevators! We're hiring clown technicians, raccoon wranglers, ghost liaisons, and more. Benefits include duct tape and existential dread.">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/main.js" defer></script>
+  <style>
+    .careers-hero {
+      background: linear-gradient(135deg, rgba(165, 18, 255, 0.3), rgba(8, 247, 254, 0.2));
+      padding: 80px 20px;
+      text-align: center;
+    }
+    .job-listing {
+      background: var(--panel-bg);
+      border: 2px solid var(--clown-purple);
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 20px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 25px;
+      align-items: center;
+      transition: all 0.3s;
+    }
+    .job-listing:hover {
+      border-color: var(--clown-yellow);
+      transform: translateX(10px);
+      box-shadow: 0 0 30px rgba(255, 195, 0, 0.2);
+    }
+    .job-icon {
+      font-size: 3em;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--shaft-dark);
+      border-radius: 50%;
+      border: 2px solid var(--clown-yellow);
+    }
+    .job-title {
+      font-family: 'Bangers', cursive;
+      font-size: 1.5em;
+      color: var(--clown-yellow);
+      margin-bottom: 8px;
+    }
+    .job-meta {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      color: #888;
+      font-size: 0.95em;
+    }
+    .job-tag {
+      padding: 4px 12px;
+      border-radius: 15px;
+      font-size: 0.8em;
+      font-family: 'Bangers', cursive;
+    }
+    .tag-urgent { background: var(--clown-red); color: white; }
+    .tag-remote { background: var(--clown-cyan); color: black; }
+    .tag-haunted { background: var(--ghost-blue); color: white; }
+    .tag-raccoon { background: #8B4513; color: white; }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 30px 0;
+    }
+    .benefit-card {
+      background: var(--panel-bg);
+      border: 2px solid var(--clown-purple);
+      border-radius: 15px;
+      padding: 25px;
+      text-align: center;
+    }
+    .benefit-icon {
+      font-size: 3em;
+      margin-bottom: 15px;
+    }
+    .application-form {
+      background: linear-gradient(135deg, #1a0a1a, #0a1a1a);
+      border: 3px solid var(--clown-yellow);
+      border-radius: 20px;
+      padding: 40px;
+      margin-top: 40px;
+    }
+    .org-chart {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 40px 0;
+    }
+    .org-level {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 10px 0;
+    }
+    .org-node {
+      background: var(--panel-bg);
+      border: 2px solid var(--clown-purple);
+      border-radius: 10px;
+      padding: 15px 20px;
+      text-align: center;
+      min-width: 150px;
+    }
+    .org-connector {
+      width: 2px;
+      height: 20px;
+      background: var(--clown-purple);
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../" class="nav-logo">🤡 ASSCLOWN ELEVATORS 🛗</a>
+    <ul class="nav-menu">
+      <li><a href="../">Home</a></li>
+      <li><a href="../shop/">Shop</a></li>
+      <li><a href="../violations/">Violations</a></li>
+      <li><a href="../certification/">Certification</a></li>
+      <li><a href="./">Careers</a></li>
+      <li><a href="../union/">Union 404</a></li>
+      <li><a href="../restricted/" class="nav-cta">⚠️ RESTRICTED</a></li>
+    </ul>
+  </nav>
+
+  <div class="breadcrumbs">
+    <a href="../">Home</a> <span>›</span> Careers
+  </div>
+
+  <header class="careers-hero">
+    <h1 class="page-title">🎪 JOIN THE CIRCUS 🎪</h1>
+    <p class="page-subtitle">Careers at Assclown Elevators</p>
+    <p style="color: #aaa; max-width: 600px; margin: 20px auto;">
+      We're always looking for talented individuals who don't mind working alongside ghosts,
+      negotiating with raccoons, and occasionally experiencing sideways motion.
+    </p>
+    <div style="margin-top: 30px;">
+      <span style="background: var(--clown-green); color: black; padding: 8px 20px; border-radius: 20px; font-family: 'Bangers', cursive;">
+        🔥 13 POSITIONS OPEN
+      </span>
+    </div>
+  </header>
+
+  <div class="ad-container leaderboard">
+    <div class="ad-label">Advertisement</div>
+    <p style="color: var(--clown-cyan);">💼 <strong>GHOST JOBS INC.</strong> - "Employment Beyond the Grave" - Flexible afterlife hours! 💼</p>
+  </div>
+
+  <div class="content-wrapper">
+    <!-- Organization Chart -->
+    <section class="content-section">
+      <h2 class="section-title" style="text-align: center;">📊 ORGANIZATIONAL STRUCTURE</h2>
+      <div class="org-chart">
+        <div class="org-level">
+          <div class="org-node" style="border-color: var(--clown-yellow);">
+            <span style="font-size: 2em;">👻</span>
+            <div style="font-family: 'Bangers', cursive; color: var(--clown-yellow);">Inspector Rick</div>
+            <div style="font-size: 0.85em; color: #888;">Eternal CEO (Deceased)</div>
+          </div>
+        </div>
+        <div class="org-connector"></div>
+        <div class="org-level">
+          <div class="org-node">
+            <span style="font-size: 1.5em;">🦝</span>
+            <div style="font-family: 'Bangers', cursive; color: var(--clown-cyan);">Raccoon Council</div>
+            <div style="font-size: 0.85em; color: #888;">Board of Directors</div>
+          </div>
+          <div class="org-node">
+            <span style="font-size: 1.5em;">🤡</span>
+            <div style="font-family: 'Bangers', cursive; color: var(--clown-cyan);">Clown Assembly</div>
+            <div style="font-size: 0.85em; color: #888;">Operations</div>
+          </div>
+        </div>
+        <div class="org-connector"></div>
+        <div class="org-level">
+          <div class="org-node">
+            <span style="font-size: 1.2em;">🔧</span>
+            <div style="color: #aaa; font-size: 0.9em;">Tech Team</div>
+          </div>
+          <div class="org-node">
+            <span style="font-size: 1.2em;">📋</span>
+            <div style="color: #aaa; font-size: 0.9em;">Compliance*</div>
+          </div>
+          <div class="org-node">
+            <span style="font-size: 1.2em;">🕯️</span>
+            <div style="color: #aaa; font-size: 0.9em;">Séance Dept.</div>
+          </div>
+          <div class="org-node">
+            <span style="font-size: 1.2em;">🩹</span>
+            <div style="color: #aaa; font-size: 0.9em;">Duct Tape Div.</div>
+          </div>
+        </div>
+        <p style="text-align: center; font-size: 0.85em; color: #666; margin-top: 20px;">
+          *Compliance department is purely decorative
+        </p>
+      </div>
+    </section>
+
+    <!-- Job Listings -->
+    <section>
+      <h2 class="section-title">🔥 OPEN POSITIONS</h2>
+
+      <div class="job-listing">
+        <div class="job-icon">🤡</div>
+        <div>
+          <h3 class="job-title">Senior Clown Technician</h3>
+          <p style="color: #aaa; margin-bottom: 10px;">Lead elevator maintenance operations. Must be comfortable with sideways motion and occasional interdimensional travel.</p>
+          <div class="job-meta">
+            <span>📍 Sub-basement 13A</span>
+            <span>💰 $66,666/year + grease allowance</span>
+            <span class="job-tag tag-urgent">URGENT</span>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="applyJob('Senior Clown Technician')">APPLY</button>
+      </div>
+
+      <div class="job-listing">
+        <div class="job-icon">🦝</div>
+        <div>
+          <h3 class="job-title">Raccoon Relations Specialist</h3>
+          <p style="color: #aaa; margin-bottom: 10px;">Manage overhead panel tenant relations. Negotiate union contracts. Distribute snacks.</p>
+          <div class="job-meta">
+            <span>📍 Various Shafts</span>
+            <span>💰 $42,069/year + unlimited snacks</span>
+            <span class="job-tag tag-raccoon">RACCOON DEPT</span>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="applyJob('Raccoon Relations Specialist')">APPLY</button>
+      </div>
+
+      <div class="job-listing">
+        <div class="job-icon">👻</div>
+        <div>
+          <h3 class="job-title">Paranormal Safety Inspector</h3>
+          <p style="color: #aaa; margin-bottom: 10px;">Conduct séances, approve haunted equipment, liaise with deceased inspectors. Death optional but preferred.</p>
+          <div class="job-meta">
+            <span>📍 Spirit Realm (Remote)</span>
+            <span>💰 Negotiable (souls accepted)</span>
+            <span class="job-tag tag-haunted">HAUNTED</span>
+            <span class="job-tag tag-remote">REMOTE</span>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="applyJob('Paranormal Safety Inspector')">APPLY</button>
+      </div>
+
+      <div class="job-listing">
+        <div class="job-icon">🩹</div>
+        <div>
+          <h3 class="job-title">Duct Tape Engineer</h3>
+          <p style="color: #aaa; margin-bottom: 10px;">Design and implement load-bearing duct tape solutions. Innovation encouraged. Building codes optional.</p>
+          <div class="job-meta">
+            <span>📍 Engineering Bay 404</span>
+            <span>💰 $55,000/year + unlimited tape</span>
+            <span class="job-tag tag-urgent">URGENT</span>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="applyJob('Duct Tape Engineer')">APPLY</button>
+      </div>
+
+      <div class="job-listing">
+        <div class="job-icon">📯</div>
+        <div>
+          <h3 class="job-title">Emergency Honk Coordinator</h3>
+          <p style="color: #aaa; margin-bottom: 10px;">Manage all honking-related emergencies. Must have excellent honk timing and lungs of steel.</p>
+          <div class="job-meta">
+            <span>📍 Honk Command Center</span>
+            <span>💰 $38,000/year + noise-canceling headphones</span>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="applyJob('Emergency Honk Coordinator')">APPLY</button>
+      </div>
+
+      <div class="job-listing">
+        <div class="job-icon">📋</div>
+        <div>
+          <h3 class="job-title">OSHA Distraction Specialist</h3>
+          <p style="color: #aaa; margin-bottom: 10px;">Keep inspectors occupied while "maintenance" occurs. Juggling skills a plus.</p>
+          <div class="job-meta">
+            <span>📍 Front Lines</span>
+            <span>💰 $45,000/year + bail fund</span>
+            <span class="job-tag tag-urgent">URGENT</span>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="applyJob('OSHA Distraction Specialist')">APPLY</button>
+      </div>
+
+      <div class="job-listing">
+        <div class="job-icon">🎵</div>
+        <div>
+          <h3 class="job-title">Cursed Music Curator</h3>
+          <p style="color: #aaa; margin-bottom: 10px;">Select and maintain elevator music playlists. Must enjoy "Entry of the Gladiators" on infinite loop.</p>
+          <div class="job-meta">
+            <span>📍 Audio Lab (Haunted Wing)</span>
+            <span>💰 $33,333/year + hearing aids</span>
+            <span class="job-tag tag-haunted">HAUNTED</span>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="applyJob('Cursed Music Curator')">APPLY</button>
+      </div>
+    </section>
+
+    <!-- Benefits -->
+    <section class="content-section">
+      <h2 class="section-title">✨ EMPLOYEE BENEFITS</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🩹</div>
+          <h4 style="color: var(--clown-yellow); font-family: 'Bangers', cursive;">Unlimited Duct Tape</h4>
+          <p style="color: #aaa; font-size: 0.95em;">All the tape you need. For work... or personal structural repairs.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🦝</div>
+          <h4 style="color: var(--clown-yellow); font-family: 'Bangers', cursive;">Raccoon Companion</h4>
+          <p style="color: #aaa; font-size: 0.95em;">Adopt an overhead panel tenant after 90 days.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">👻</div>
+          <h4 style="color: var(--clown-yellow); font-family: 'Bangers', cursive;">Afterlife Insurance</h4>
+          <p style="color: #aaa; font-size: 0.95em;">Continue working even after death! Just ask Rick.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🧴</div>
+          <h4 style="color: var(--clown-yellow); font-family: 'Bangers', cursive;">ClownGrease™ Allowance</h4>
+          <p style="color: #aaa; font-size: 0.95em;">Monthly supply of our proprietary lubricant.</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">📍</div>
+          <h4 style="color: var(--clown-yellow); font-family: 'Bangers', cursive;">Flexible Location</h4>
+          <p style="color: #aaa; font-size: 0.95em;">Work from any floor (including ones that don't exist).</p>
+        </div>
+        <div class="benefit-card">
+          <div class="benefit-icon">🎪</div>
+          <h4 style="color: var(--clown-yellow); font-family: 'Bangers', cursive;">Circus Tickets</h4>
+          <p style="color: #aaa; font-size: 0.95em;">Free admission to affiliated circuses worldwide.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Application Form -->
+    <section class="application-form">
+      <h2 class="section-title">📝 QUICK APPLICATION</h2>
+      <p style="color: #aaa; margin-bottom: 30px;">Fill out the form below. Raccoon HR will review your application within 4-6 business dimensions.</p>
+
+      <form onsubmit="submitApplication(event)">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+          <div class="form-group">
+            <label class="form-label">Full Name (or Clown Name)</label>
+            <input type="text" class="form-input" placeholder="e.g., Bobo McHonkface" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email (or Séance Contact)</label>
+            <input type="email" class="form-input" placeholder="you@example.com" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Current Status</label>
+            <select class="form-select" required>
+              <option value="">Select...</option>
+              <option>Living Human</option>
+              <option>Ghost/Spirit</option>
+              <option>Raccoon</option>
+              <option>Unclear / Interdimensional</option>
+              <option>Clown (Professional)</option>
+              <option>Clown (Amateur)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Position Applying For</label>
+            <select class="form-select" id="positionSelect" required>
+              <option value="">Select...</option>
+              <option>Senior Clown Technician</option>
+              <option>Raccoon Relations Specialist</option>
+              <option>Paranormal Safety Inspector</option>
+              <option>Duct Tape Engineer</option>
+              <option>Emergency Honk Coordinator</option>
+              <option>OSHA Distraction Specialist</option>
+              <option>Cursed Music Curator</option>
+              <option>Other (Surprise Us)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group" style="margin-top: 20px;">
+          <label class="form-label">Why do you want to work here?</label>
+          <textarea class="form-input" rows="4" placeholder="Tell us about your passion for elevator chaos..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Special Skills (check all that apply)</label>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; margin-top: 10px;">
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox"> Duct tape engineering
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox"> Raccoon communication
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox"> Séance facilitation
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox"> Professional honking
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox"> Sideways walking
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+              <input type="checkbox"> Elevator juggling
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+            <input type="checkbox" required>
+            <span>I understand that employment may involve paranormal activity, raccoon encounters, and/or violations of physics</span>
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="font-size: 1.3em; padding: 20px 50px;">
+          🎪 SUBMIT APPLICATION 🎪
+        </button>
+      </form>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="../">Home</a>
+      <a href="../shop/">Shop</a>
+      <a href="../certification/">Certification</a>
+      <a href="./">Careers</a>
+      <a href="../union/">Union 404</a>
+      <a href="../pages/privacy.html">Privacy</a>
+      <a href="../pages/terms.html">Terms of Chaos</a>
+    </div>
+    <p class="footer-text">© 2069 Assclown Elevators, LLC. All rights reversed. <span>Union Local 404</span> approved.</p>
+    <p style="color: #444; font-size: 0.85em; margin-top: 10px;">Assclown Elevators is an equal opportunity employer. We do not discriminate based on species, dimensional origin, or vitality status.</p>
+  </footer>
+
+  <script>
+    function applyJob(position) {
+      document.getElementById('positionSelect').value = position;
+      document.querySelector('.application-form').scrollIntoView({ behavior: 'smooth' });
+      showToast(`Applying for: ${position}. Good luck!`, 'info');
+    }
+
+    function submitApplication(e) {
+      e.preventDefault();
+      showToast('🎪 Application submitted! Raccoon HR will be in touch.', 'success');
+      setTimeout(() => {
+        showToast('👻 Rick says: "' + getRandomRickQuote() + '"', 'info', 5000);
+      }, 2000);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      trackPageVisit('careers');
+    });
+  </script>
+</body>
+</html>

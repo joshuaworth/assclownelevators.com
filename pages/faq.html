@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FAQ | ASSCLOWN ELEVATORS - Questions You Shouldn't Ask</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/main.js" defer></script>
+  <style>
+    .faq-item {
+      background: var(--panel-bg);
+      border: 2px solid var(--clown-purple);
+      border-radius: 15px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    .faq-item:hover {
+      border-color: var(--clown-yellow);
+    }
+    .faq-question {
+      padding: 25px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'Bangers', cursive;
+      font-size: 1.3em;
+      color: var(--clown-yellow);
+    }
+    .faq-question:hover {
+      background: rgba(255, 195, 0, 0.1);
+    }
+    .faq-toggle {
+      font-size: 1.5em;
+      transition: transform 0.3s;
+    }
+    .faq-item.active .faq-toggle {
+      transform: rotate(45deg);
+    }
+    .faq-answer {
+      padding: 0 25px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out, padding 0.3s;
+      color: #aaa;
+      line-height: 1.8;
+    }
+    .faq-item.active .faq-answer {
+      padding: 0 25px 25px;
+      max-height: 500px;
+    }
+    .faq-category {
+      font-family: 'Creepster', cursive;
+      font-size: 2em;
+      color: var(--clown-cyan);
+      margin: 40px 0 20px;
+      text-shadow: 2px 2px 0 var(--clown-purple);
+    }
+    .ask-rick {
+      background: linear-gradient(135deg, var(--ghost-blue), var(--clown-purple));
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../" class="nav-logo">🤡 ASSCLOWN ELEVATORS 🛗</a>
+    <ul class="nav-menu">
+      <li><a href="../">Home</a></li>
+      <li><a href="../shop/">Shop</a></li>
+      <li><a href="../violations/">Violations</a></li>
+      <li><a href="../certification/">Certification</a></li>
+      <li><a href="../careers/">Careers</a></li>
+      <li><a href="../union/">Union 404</a></li>
+    </ul>
+  </nav>
+
+  <div class="breadcrumbs">
+    <a href="../">Home</a> <span>›</span> FAQ
+  </div>
+
+  <header class="page-header">
+    <h1 class="page-title">❓ FREQUENTLY ASKED QUESTIONS ❓</h1>
+    <p class="page-subtitle">Answers that may or may not be helpful</p>
+  </header>
+
+  <div class="content-wrapper">
+    <h2 class="faq-category">🛗 GENERAL QUESTIONS</h2>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Is this a real company?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Define "real." We exist. Our elevators exist (in multiple dimensions). Inspector Rick exists (posthumously). The raccoons definitely exist. So yes, we're as real as anything else in this chaotic universe. We've been operating since 1969 and have the OSHA violations to prove it.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Why "Assclown"?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Our founder, Reginald "Reggie" McHonksworth III, was called an "assclown" by an OSHA inspector in 1969 after his third consecutive major violation. Rather than take offense, he embraced it. "If being an assclown means prioritizing vibes over safety," he said, "then honk honk, baby." He disappeared into Elevator 13 three days later. The name stuck.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Why does my elevator move sideways now?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>That's not a bug, it's a feature! Our patented PhysicsBreaker™ technology allows elevators to explore movement on all axes. Sideways motion is actually a sign that your elevator is evolving. Some of our most enlightened elevators also move diagonally and interdimensionally. Embrace the journey.</p>
+      </div>
+    </div>
+
+    <h2 class="faq-category">🤡 CERTIFICATION</h2>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Is the Assclown Certification accredited?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Our certification is recognized by Union Local 404, the Raccoon Collective, and Inspector Rick's ghost. It's also accepted in 37 countries and 4 dimensions. OSHA does not recognize our certification, but they don't recognize most of what we do, so that tracks.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Why does certification cost $169.69?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>That price was determined through extensive market research (asking Rick) and reflects the value of 69 minutes of expert instruction. The raccoons also demanded their cut. We wanted to charge $420.69 but the Clown Council outvoted us.</p>
+      </div>
+    </div>
+
+    <h2 class="faq-category">🦝 RACCOONS</h2>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Why are there raccoons in my elevator?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Every modern elevator needs 8-12 raccoons in the overhead panel. They provide natural pest control, emergency snack distribution, and excellent company. They also run our HR department. If you don't see any raccoons, they're probably just hiding. They're always there. Watching.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>The raccoons have formed their own government. Is this normal?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Completely normal! Most raccoon colonies establish some form of governance after reaching a population of 6. They typically start with a simple council system before evolving into a parliamentary democracy. Respect their laws, pay your snack taxes, and they'll leave you in peace.</p>
+      </div>
+    </div>
+
+    <h2 class="faq-category">👻 PARANORMAL</h2>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Is my elevator haunted?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>All elevators are haunted. Some just hide it better than others. If your elevator plays music when unplugged, arrives before you call it, or occasionally opens into a void, congratulations—you have a particularly expressive ghost. Say hi to them. They're probably lonely.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Who is Inspector Rick?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Inspector Rick was our head safety inspector who died in 1984 in a mysterious elevator accident (he was the one who unlocked sideways motion). He immediately returned as a ghost and has been approving inspections ever since. He's very efficient—his approval rate is 100% because he doesn't care anymore. He says "It's fine. Everything is fine." a lot.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>What happens if I press all elevator buttons at once?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p><strong style="color: var(--clown-red);">DO NOT DO THIS.</strong> Pressing all buttons simultaneously summons the Clown King. We've had 7 summoning incidents this year alone. If you accidentally summon the Clown King, do not make eye contact, do not accept any balloon animals, and initiate Protocol Honk immediately.</p>
+      </div>
+    </div>
+
+    <h2 class="faq-category">⚠️ SUB-BASEMENT 13A</h2>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>What is Sub-basement 13A?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>Sub-basement 13A is our classified archives and containment facility. It exists in a state of quantum superposition and may or may not be accessible at any given time. Access requires HONK-5 clearance. We recommend not seeking it out unless you're prepared for what you might find.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>I went to Sub-basement 13A and now time feels weird. Help?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>This is a known side effect. Time functions differently in Sub-basement 13A, and exposure can cause temporal distortion lasting anywhere from 5 minutes to 47 years (depending on which timeline you're measuring from). Most symptoms fade within a week. If you start seeing your past self, do NOT interact with them.</p>
+      </div>
+    </div>
+
+    <h2 class="faq-category">💰 BILLING & PAYMENTS</h2>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>What payment methods do you accept?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>We accept all major credit cards, PayPal, cryptocurrency (including GhostCoin), duct tape (at current market value), premium snacks (raccoon-approved brands only), and souls (one-time exchange rate applies). Cash payments must be left under the door of Sub-basement 13A at midnight.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question" onclick="toggleFaq(this)">
+        <span>Can I get a refund?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        <p>All sales are final. This policy was implemented after someone tried to return a haunted clipboard (the ghost wouldn't leave). If you believe you deserve a refund, you may appeal to Ghost Court, which convenes every 13th of the month. Bring evidence and snacks (for the raccoon jury).</p>
+      </div>
+    </div>
+
+    <!-- Ask Rick Section -->
+    <div class="ask-rick">
+      <h3 style="font-family: 'Creepster', cursive; font-size: 2em; color: white; margin-bottom: 20px;">
+        👻 CAN'T FIND YOUR ANSWER?
+      </h3>
+      <p style="color: rgba(255,255,255,0.8); margin-bottom: 25px;">
+        Ask Inspector Rick directly! He's always watching and occasionally responds.
+      </p>
+      <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+        <button class="btn btn-primary" onclick="askRick()">🕯️ SUMMON RICK</button>
+        <button class="btn btn-secondary" onclick="showToast('🦝 The raccoons are reviewing your question...', 'info')">🦝 ASK RACCOON HR</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="../">Home</a>
+      <a href="../shop/">Shop</a>
+      <a href="../certification/">Certification</a>
+      <a href="../careers/">Careers</a>
+      <a href="../union/">Union 404</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+    <p class="footer-text">© 2069 Assclown Elevators, LLC. All rights reversed. <span>Union Local 404</span> approved.</p>
+  </footer>
+
+  <script>
+    function toggleFaq(element) {
+      const item = element.parentElement;
+      const wasActive = item.classList.contains('active');
+
+      // Close all FAQ items
+      document.querySelectorAll('.faq-item').forEach(faq => {
+        faq.classList.remove('active');
+      });
+
+      // Open clicked one if it wasn't already open
+      if (!wasActive) {
+        item.classList.add('active');
+      }
+    }
+
+    function askRick() {
+      showToast('🕯️ Summoning Rick...', 'info');
+      setTimeout(() => {
+        showToast('👻 Rick says: "' + getRandomRickQuote() + '"', 'success', 5000);
+      }, 2000);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      trackPageVisit('faq');
+    });
+  </script>
+</body>
+</html>

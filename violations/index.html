@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OSHA Violation Database | ASSCLOWN ELEVATORS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse our extensive collection of OSHA violations. Generate new violations. Report suspicious elevator activity.">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/main.js" defer></script>
+  <style>
+    .violation-generator {
+      background: linear-gradient(135deg, #1a0a1a, #0a1a1a);
+      border: 3px solid var(--warning-orange);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .generator-btn {
+      font-size: 1.5em;
+      padding: 20px 50px;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 20px var(--clown-red); }
+      50% { box-shadow: 0 0 50px var(--clown-red); }
+    }
+    .generated-violation {
+      background: var(--shaft-dark);
+      border: 2px dashed var(--clown-yellow);
+      border-radius: 15px;
+      padding: 30px;
+      margin-top: 30px;
+      text-align: left;
+      display: none;
+    }
+    .generated-violation.active { display: block; animation: slideIn 0.5s ease-out; }
+    @keyframes slideIn {
+      from { transform: translateY(-20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .violation-stat { margin: 10px 0; }
+    .violation-stat strong {
+      color: var(--clown-yellow);
+      font-family: 'Bangers', cursive;
+      min-width: 120px;
+      display: inline-block;
+    }
+    .severity-CRITICAL { color: var(--clown-red); }
+    .severity-SEVERE { color: var(--warning-orange); }
+    .severity-PARANORMAL { color: var(--clown-purple); }
+    .severity-HILARIOUS { color: var(--clown-pink); }
+    .filter-bar {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+    .violation-list {
+      display: grid;
+      gap: 20px;
+    }
+    .violation-entry {
+      background: var(--panel-bg);
+      border: 2px solid var(--clown-purple);
+      border-radius: 15px;
+      padding: 25px;
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      gap: 20px;
+      align-items: center;
+      transition: all 0.3s;
+    }
+    .violation-entry:hover {
+      transform: translateX(10px);
+      border-color: var(--clown-yellow);
+      box-shadow: 0 0 30px rgba(255, 195, 0, 0.2);
+    }
+    .violation-code-box {
+      background: var(--clown-red);
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      font-family: 'Bangers', cursive;
+      font-size: 1.2em;
+    }
+    .report-form {
+      background: var(--panel-bg);
+      border: 2px solid var(--clown-cyan);
+      border-radius: 20px;
+      padding: 30px;
+      margin-top: 40px;
+    }
+    .leaderboard {
+      background: linear-gradient(135deg, var(--panel-bg), #0a0a1a);
+      border: 2px solid var(--clown-yellow);
+      border-radius: 15px;
+      padding: 25px;
+    }
+    .leaderboard-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px dashed rgba(255, 195, 0, 0.2);
+    }
+    .leaderboard-rank {
+      font-family: 'Creepster', cursive;
+      color: var(--clown-yellow);
+      font-size: 1.3em;
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../" class="nav-logo">🤡 ASSCLOWN ELEVATORS 🛗</a>
+    <ul class="nav-menu">
+      <li><a href="../">Home</a></li>
+      <li><a href="../shop/">Shop</a></li>
+      <li><a href="./">Violations</a></li>
+      <li><a href="../certification/">Certification</a></li>
+      <li><a href="../careers/">Careers</a></li>
+      <li><a href="../union/">Union 404</a></li>
+      <li><a href="../restricted/" class="nav-cta">⚠️ RESTRICTED</a></li>
+    </ul>
+  </nav>
+
+  <div class="breadcrumbs">
+    <a href="../">Home</a> <span>›</span> OSHA Violation Database
+  </div>
+
+  <header class="page-header">
+    <h1 class="page-title">⚠️ OSHA VIOLATION DATABASE ⚠️</h1>
+    <p class="page-subtitle">13,847+ violations and counting. Generate your own!</p>
+  </header>
+
+  <div class="ad-container leaderboard">
+    <div class="ad-label">Advertisement</div>
+    <p style="color: var(--clown-cyan);">🔧 <strong>TIRED OF OSHA VIOLATIONS?</strong> Neither are we! Get more at AssclownElevators.com! 🔧</p>
+  </div>
+
+  <div class="content-wrapper">
+    <!-- Violation Generator -->
+    <section class="violation-generator">
+      <h2 class="section-title">🎰 VIOLATION GENERATOR 🎰</h2>
+      <p style="color: #aaa; margin-bottom: 30px; font-size: 1.2em;">
+        Press the button to generate a completely random (and legally binding*) OSHA violation!
+      </p>
+      <button class="btn btn-warning generator-btn" onclick="generateNewViolation()">
+        🎲 GENERATE VIOLATION 🎲
+      </button>
+      <div id="generatedViolation" class="generated-violation">
+        <h3 style="color: var(--clown-red); font-family: 'Creepster', cursive; font-size: 1.8em; margin-bottom: 20px;">
+          🚨 NEW VIOLATION GENERATED 🚨
+        </h3>
+        <div class="violation-stat"><strong>CODE:</strong> <span id="genCode"></span></div>
+        <div class="violation-stat"><strong>TYPE:</strong> <span id="genType"></span></div>
+        <div class="violation-stat"><strong>SEVERITY:</strong> <span id="genSeverity"></span></div>
+        <div class="violation-stat"><strong>FINE:</strong> <span id="genFine" style="color: var(--clown-pink);"></span></div>
+        <div class="violation-stat"><strong>DATE:</strong> <span id="genDate"></span></div>
+        <div class="violation-stat"><strong>INSPECTOR:</strong> <span id="genInspector"></span></div>
+        <div class="violation-stat"><strong>STATUS:</strong> <span id="genStatus"></span></div>
+        <div style="margin-top: 20px; display: flex; gap: 15px; flex-wrap: wrap;">
+          <button class="btn btn-primary" onclick="purchaseViolation()">🛒 PURCHASE - $29.99</button>
+          <button class="btn btn-secondary" onclick="reportToRick()">👻 REPORT TO RICK</button>
+          <button class="btn btn-ghost" onclick="appealViolation()">⚖️ APPEAL TO GHOST COURT</button>
+        </div>
+      </div>
+      <p style="font-size: 0.8em; color: #444; margin-top: 20px;">
+        *Not actually legally binding. We think. Rick says it's fine.
+      </p>
+    </section>
+
+    <div style="display: grid; grid-template-columns: 1fr 300px; gap: 30px;">
+      <div>
+        <!-- Recent Violations -->
+        <section class="content-section">
+          <h2 class="section-title">📋 RECENT VIOLATIONS</h2>
+          <div class="filter-bar">
+            <select class="form-select" style="max-width: 200px;">
+              <option>All Severities</option>
+              <option>CRITICAL</option>
+              <option>SEVERE</option>
+              <option>PARANORMAL</option>
+              <option>HILARIOUS</option>
+            </select>
+            <select class="form-select" style="max-width: 200px;">
+              <option>All Inspectors</option>
+              <option>Inspector Rick (Deceased)</option>
+              <option>Raccoon Division</option>
+              <option>Clown Council</option>
+            </select>
+            <button class="btn btn-secondary" style="padding: 10px 20px;">🔍 Filter</button>
+          </div>
+
+          <div class="violation-list" id="violationList">
+            <!-- Generated by JS -->
+          </div>
+
+          <div style="text-align: center; margin-top: 30px;">
+            <button class="btn btn-primary" onclick="loadMoreViolations()">LOAD MORE VIOLATIONS</button>
+          </div>
+        </section>
+
+        <!-- Report Form -->
+        <section class="report-form">
+          <h2 class="section-title">📝 REPORT A VIOLATION</h2>
+          <p style="color: #aaa; margin-bottom: 20px;">
+            Witnessed an elevator crime? Saw a clown doing something suspicious? Report it here!
+          </p>
+          <form onsubmit="submitViolationReport(event)">
+            <div class="form-group">
+              <label class="form-label">Your Name (or Alias)</label>
+              <input type="text" class="form-input" placeholder="e.g., Concerned Citizen, Definitely Not A Raccoon">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Elevator Location</label>
+              <input type="text" class="form-input" placeholder="e.g., Sub-basement 13A, The Haunted Hilton">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Violation Description</label>
+              <textarea class="form-input" rows="4" placeholder="Describe the horrors you witnessed..."></textarea>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Severity Level</label>
+              <select class="form-select">
+                <option>MILD CONCERN</option>
+                <option>MODERATE PANIC</option>
+                <option>SEVERE DISTRESS</option>
+                <option>EXISTENTIAL CRISIS</option>
+                <option>CLOWN EMERGENCY</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+                <input type="checkbox" style="width: 20px; height: 20px;">
+                <span>I confirm this is not a prank (it probably is)</span>
+              </label>
+            </div>
+            <button type="submit" class="btn btn-warning">🚨 SUBMIT REPORT</button>
+          </form>
+        </section>
+      </div>
+
+      <aside>
+        <!-- Violation Leaderboard -->
+        <div class="leaderboard">
+          <h3 style="font-family: 'Creepster', cursive; color: var(--clown-yellow); font-size: 1.5em; margin-bottom: 20px;">
+            🏆 TOP VIOLATORS
+          </h3>
+          <div class="leaderboard-item">
+            <span class="leaderboard-rank">🥇 1.</span>
+            <span>Building 404</span>
+            <span style="color: var(--clown-pink);">2,847</span>
+          </div>
+          <div class="leaderboard-item">
+            <span class="leaderboard-rank">🥈 2.</span>
+            <span>Clown Tower</span>
+            <span style="color: var(--clown-pink);">1,923</span>
+          </div>
+          <div class="leaderboard-item">
+            <span class="leaderboard-rank">🥉 3.</span>
+            <span>Rick's Realm</span>
+            <span style="color: var(--clown-pink);">1,666</span>
+          </div>
+          <div class="leaderboard-item">
+            <span>4.</span>
+            <span>Raccoon HQ</span>
+            <span style="color: var(--clown-pink);">1,404</span>
+          </div>
+          <div class="leaderboard-item">
+            <span>5.</span>
+            <span>Shaft of Doom</span>
+            <span style="color: var(--clown-pink);">1,069</span>
+          </div>
+        </div>
+
+        <!-- Ad Sidebar -->
+        <div class="ad-container sidebar" style="margin-top: 30px;">
+          <div class="ad-label">Advertisement</div>
+          <p style="color: var(--clown-yellow); font-family: 'Bangers', cursive;">DUCT TAPE SALE!</p>
+          <p style="color: #aaa; font-size: 0.9em;">69% off all load-bearing tape!</p>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="content-section" style="margin-top: 30px;">
+          <h3 style="font-family: 'Bangers', cursive; color: var(--clown-cyan); margin-bottom: 15px;">
+            📊 QUICK STATS
+          </h3>
+          <p style="margin: 10px 0;"><strong style="color: var(--clown-yellow);">Total Violations:</strong> 13,847</p>
+          <p style="margin: 10px 0;"><strong style="color: var(--clown-yellow);">This Week:</strong> 247</p>
+          <p style="margin: 10px 0;"><strong style="color: var(--clown-yellow);">Paranormal:</strong> 892</p>
+          <p style="margin: 10px 0;"><strong style="color: var(--clown-yellow);">Pending Appeals:</strong> 666</p>
+          <p style="margin: 10px 0;"><strong style="color: var(--clown-yellow);">Rick Approvals:</strong> ALL</p>
+        </div>
+
+        <!-- Related Links -->
+        <div class="content-section" style="margin-top: 30px;">
+          <h3 style="font-family: 'Bangers', cursive; color: var(--clown-cyan); margin-bottom: 15px;">
+            🔗 RELATED
+          </h3>
+          <ul style="list-style: none;">
+            <li style="margin: 10px 0;"><a href="../certification/" style="color: var(--clown-cyan);">Get Certified →</a></li>
+            <li style="margin: 10px 0;"><a href="../shop/" style="color: var(--clown-cyan);">Violation Merch →</a></li>
+            <li style="margin: 10px 0;"><a href="ghost-court.html" style="color: var(--clown-cyan);">Ghost Court Info →</a></li>
+            <li style="margin: 10px 0;"><a href="../restricted/" style="color: var(--clown-red);">⚠️ Restricted Area →</a></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="../">Home</a>
+      <a href="../shop/">Shop</a>
+      <a href="../certification/">Certification</a>
+      <a href="../careers/">Careers</a>
+      <a href="../union/">Union 404</a>
+      <a href="../blog/">Blog</a>
+      <a href="../pages/privacy.html">Privacy</a>
+      <a href="../pages/terms.html">Terms of Chaos</a>
+    </div>
+    <p class="footer-text">© 2069 Assclown Elevators, LLC. All rights reversed. <span>Union Local 404</span> approved.</p>
+  </footer>
+
+  <script>
+    // Generate violation list on load
+    function populateViolationList() {
+      const list = document.getElementById('violationList');
+      list.innerHTML = '';
+
+      for (let i = 0; i < 10; i++) {
+        const v = generateViolation();
+        list.innerHTML += `
+          <div class="violation-entry animate-on-scroll">
+            <div class="violation-code-box">${v.code}</div>
+            <div>
+              <h4 style="color: var(--clown-yellow); font-family: 'Permanent Marker', cursive; margin-bottom: 8px;">${v.type}</h4>
+              <p style="color: #888; font-size: 0.95em;">Inspector: ${v.inspector} | Date: ${v.date}</p>
+            </div>
+            <div style="text-align: right;">
+              <div class="severity-${v.severity}" style="font-family: 'Bangers', cursive; margin-bottom: 5px;">${v.severity}</div>
+              <div style="color: var(--clown-pink); font-family: 'Creepster', cursive;">${v.fine}</div>
+            </div>
+          </div>
+        `;
+      }
+    }
+
+    function generateNewViolation() {
+      const v = generateViolation();
+      document.getElementById('genCode').textContent = v.code;
+      document.getElementById('genType').textContent = v.type;
+      document.getElementById('genSeverity').innerHTML = `<span class="severity-${v.severity}">${v.severity}</span>`;
+      document.getElementById('genFine').textContent = v.fine;
+      document.getElementById('genDate').textContent = v.date;
+      document.getElementById('genInspector').textContent = v.inspector;
+      document.getElementById('genStatus').textContent = v.status;
+      document.getElementById('generatedViolation').classList.add('active');
+    }
+
+    function purchaseViolation() {
+      showToast('🛒 Violation added to cart! Total: $29.99 + your dignity', 'success');
+    }
+
+    function reportToRick() {
+      showToast('👻 Rick says: "' + getRandomRickQuote() + '"', 'info', 5000);
+    }
+
+    function appealViolation() {
+      showToast('⚖️ Ghost Court date set for: The 13th of Never, 3 AM', 'info');
+    }
+
+    function loadMoreViolations() {
+      const list = document.getElementById('violationList');
+      for (let i = 0; i < 5; i++) {
+        const v = generateViolation();
+        const entry = document.createElement('div');
+        entry.className = 'violation-entry';
+        entry.innerHTML = `
+          <div class="violation-code-box">${v.code}</div>
+          <div>
+            <h4 style="color: var(--clown-yellow); font-family: 'Permanent Marker', cursive; margin-bottom: 8px;">${v.type}</h4>
+            <p style="color: #888; font-size: 0.95em;">Inspector: ${v.inspector} | Date: ${v.date}</p>
+          </div>
+          <div style="text-align: right;">
+            <div class="severity-${v.severity}" style="font-family: 'Bangers', cursive; margin-bottom: 5px;">${v.severity}</div>
+            <div style="color: var(--clown-pink); font-family: 'Creepster', cursive;">${v.fine}</div>
+          </div>
+        `;
+        list.appendChild(entry);
+      }
+      showToast('Loaded 5 more violations. Rick is disappointed.', 'info');
+    }
+
+    function submitViolationReport(e) {
+      e.preventDefault();
+      showToast('📝 Report submitted! Inspector Rick will investigate... eventually.', 'success');
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      populateViolationList();
+      trackPageVisit('violations');
+    });
+  </script>
+</body>
+</html>

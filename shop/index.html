@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Clown Shop | ASSCLOWN ELEVATORS Official Merch</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Official Assclown Elevators merchandise. Duct tape, clown grease, raccoon adoption kits, and more!">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/main.js" defer></script>
+  <style>
+    .shop-hero {
+      background: linear-gradient(135deg, rgba(255, 23, 68, 0.3), rgba(165, 18, 255, 0.3));
+      padding: 60px 20px;
+      text-align: center;
+    }
+    .category-nav {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin: 30px 0;
+    }
+    .category-btn {
+      padding: 12px 25px;
+      background: var(--panel-bg);
+      border: 2px solid var(--clown-purple);
+      border-radius: 30px;
+      color: var(--clown-cyan);
+      font-family: 'Bangers', cursive;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .category-btn:hover, .category-btn.active {
+      background: var(--clown-purple);
+      color: white;
+    }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+    .product-card {
+      background: var(--panel-bg);
+      border: 3px solid var(--clown-purple);
+      border-radius: 20px;
+      overflow: hidden;
+      transition: all 0.4s;
+    }
+    .product-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--clown-yellow);
+      box-shadow: 0 20px 50px rgba(255, 195, 0, 0.3);
+    }
+    .product-image {
+      height: 200px;
+      background: linear-gradient(135deg, #1a1a1a, #0a0a1a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 5em;
+      border-bottom: 2px solid var(--clown-purple);
+    }
+    .product-info {
+      padding: 20px;
+    }
+    .product-name {
+      font-family: 'Bangers', cursive;
+      font-size: 1.4em;
+      color: var(--clown-yellow);
+      margin-bottom: 10px;
+    }
+    .product-desc {
+      color: #aaa;
+      font-size: 0.95em;
+      margin-bottom: 15px;
+      min-height: 60px;
+    }
+    .product-price {
+      font-family: 'Creepster', cursive;
+      font-size: 2em;
+      color: var(--clown-pink);
+      margin-bottom: 15px;
+    }
+    .product-price .original {
+      font-size: 0.5em;
+      text-decoration: line-through;
+      color: #666;
+    }
+    .product-badges {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      padding: 4px 10px;
+      border-radius: 15px;
+      font-size: 0.75em;
+      font-family: 'Bangers', cursive;
+    }
+    .badge-bestseller { background: var(--clown-red); color: white; }
+    .badge-haunted { background: var(--ghost-blue); color: white; }
+    .badge-new { background: var(--clown-green); color: black; }
+    .badge-raccoon { background: #8B4513; color: white; }
+    .cart-summary {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--panel-bg);
+      border: 3px solid var(--clown-yellow);
+      border-radius: 15px;
+      padding: 20px;
+      z-index: 1000;
+      min-width: 250px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    }
+    .cart-summary h4 {
+      font-family: 'Bangers', cursive;
+      color: var(--clown-yellow);
+      margin-bottom: 10px;
+    }
+    .featured-section {
+      background: linear-gradient(135deg, rgba(255, 195, 0, 0.1), transparent);
+      border: 2px solid var(--clown-yellow);
+      border-radius: 20px;
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+    .bundle-card {
+      background: linear-gradient(135deg, #1a0a1a, #0a1a1a);
+      border: 3px dashed var(--clown-pink);
+      border-radius: 20px;
+      padding: 30px;
+      text-align: center;
+    }
+    .bundle-items {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      font-size: 3em;
+      margin: 20px 0;
+    }
+    .affiliate-section {
+      background: var(--panel-bg);
+      border: 2px solid var(--clown-cyan);
+      border-radius: 15px;
+      padding: 25px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <nav class="site-nav">
+    <a href="../" class="nav-logo">🤡 ASSCLOWN ELEVATORS 🛗</a>
+    <ul class="nav-menu">
+      <li><a href="../">Home</a></li>
+      <li><a href="./">Shop</a></li>
+      <li><a href="../violations/">Violations</a></li>
+      <li><a href="../certification/">Certification</a></li>
+      <li><a href="../careers/">Careers</a></li>
+      <li><a href="../union/">Union 404</a></li>
+      <li><a href="../restricted/" class="nav-cta">⚠️ RESTRICTED</a></li>
+    </ul>
+  </nav>
+
+  <div class="breadcrumbs">
+    <a href="../">Home</a> <span>›</span> The Clown Shop
+  </div>
+
+  <header class="shop-hero">
+    <h1 class="page-title">🛒 THE CLOWN SHOP 🛒</h1>
+    <p class="page-subtitle">Official Assclown Elevators Merchandise & Supplies</p>
+    <p style="color: #aaa; margin-top: 15px;">Free shipping on orders over $404 | All items haunted by Inspector Rick</p>
+  </header>
+
+  <div class="ad-container leaderboard">
+    <div class="ad-label">Sponsored</div>
+    <p style="color: var(--clown-yellow); font-family: 'Bangers', cursive;">🎪 CIRCUS SURPLUS - "We Have Too Much Stuff" Sale! Use code HONK for 13% off! 🎪</p>
+  </div>
+
+  <div class="content-wrapper">
+    <!-- Categories -->
+    <div class="category-nav">
+      <button class="category-btn active" onclick="filterProducts('all')">🎪 All Products</button>
+      <button class="category-btn" onclick="filterProducts('safety')">🔧 Safety Equipment</button>
+      <button class="category-btn" onclick="filterProducts('apparel')">👕 Apparel</button>
+      <button class="category-btn" onclick="filterProducts('supplies')">📦 Supplies</button>
+      <button class="category-btn" onclick="filterProducts('raccoon')">🦝 Raccoon Dept.</button>
+      <button class="category-btn" onclick="filterProducts('haunted')">👻 Haunted Items</button>
+    </div>
+
+    <!-- Featured Bundle -->
+    <div class="featured-section">
+      <h2 class="section-title" style="text-align: center;">🌟 FEATURED BUNDLE 🌟</h2>
+      <div class="bundle-card">
+        <h3 style="font-family: 'Creepster', cursive; font-size: 2em; color: var(--clown-yellow);">
+          THE COMPLETE ASSCLOWN STARTER KIT
+        </h3>
+        <div class="bundle-items">
+          <span title="Clown Grease">🧴</span>
+          <span>+</span>
+          <span title="Duct Tape">🩹</span>
+          <span>+</span>
+          <span title="Clown Nose">🔴</span>
+          <span>+</span>
+          <span title="Rick's Guide">📖</span>
+          <span>+</span>
+          <span title="Raccoon Friend">🦝</span>
+        </div>
+        <p style="color: #aaa; margin-bottom: 20px;">Everything you need to start your journey into elevator chaos!</p>
+        <div class="product-price">
+          <span class="original">$199.99</span> $99.69
+        </div>
+        <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+          <button class="btn btn-primary" onclick="addBundleToCart()">🛒 ADD TO CART</button>
+          <button class="btn btn-secondary" onclick="showToast('Bundle saved to wishlist!', 'success')">💝 SAVE FOR LATER</button>
+        </div>
+        <p style="font-size: 0.85em; color: #666; margin-top: 15px;">* Raccoon may arrive with attitude. Not responsible for overhead panel colonization.</p>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <h2 class="section-title">ALL PRODUCTS</h2>
+    <div class="product-grid" id="productGrid">
+      <!-- Products populated by JS -->
+    </div>
+
+    <!-- Amazon Affiliate Section -->
+    <div class="affiliate-section">
+      <h3 style="font-family: 'Creepster', cursive; color: var(--clown-yellow); font-size: 1.8em; margin-bottom: 20px;">
+        🔗 RICK-APPROVED AMAZON PICKS
+      </h3>
+      <p style="color: #aaa; margin-bottom: 20px;">Inspector Rick recommends these items for all your elevator maintenance needs!</p>
+
+      <div class="affiliate-box">
+        <span class="affiliate-icon">🩹</span>
+        <div class="affiliate-text">
+          <h4>Industrial Duct Tape (36-Pack)</h4>
+          <p>"Load-bearing rated" according to Rick. Perfect for structural repairs.</p>
+        </div>
+        <a href="#" class="btn btn-primary affiliate-btn" onclick="showToast('Opening Amazon... Rick gets a commission!', 'info')">VIEW ON AMAZON</a>
+      </div>
+
+      <div class="affiliate-box">
+        <span class="affiliate-icon">🔦</span>
+        <div class="affiliate-text">
+          <h4>Professional Flashlight (Ghost-Detecting Edition)</h4>
+          <p>Essential for sub-basement investigations. Flickers near paranormal activity.</p>
+        </div>
+        <a href="#" class="btn btn-primary affiliate-btn" onclick="showToast('Opening Amazon... Rick gets a commission!', 'info')">VIEW ON AMAZON</a>
+      </div>
+
+      <div class="affiliate-box">
+        <span class="affiliate-icon">📻</span>
+        <div class="affiliate-text">
+          <h4>Two-Way Radio Set (Séance Compatible)</h4>
+          <p>Communicate with team members... and occasionally the deceased.</p>
+        </div>
+        <a href="#" class="btn btn-primary affiliate-btn" onclick="showToast('Opening Amazon... Rick gets a commission!', 'info')">VIEW ON AMAZON</a>
+      </div>
+
+      <p style="font-size: 0.8em; color: #444; margin-top: 20px; text-align: center;">
+        As an Amazon Associate, we earn from qualifying purchases. Rick takes 13% of all commissions for ghost-related expenses.
+      </p>
+    </div>
+
+    <!-- Donation Section -->
+    <div class="content-section" style="text-align: center; margin-top: 40px;">
+      <h3 style="font-family: 'Creepster', cursive; color: var(--clown-yellow); font-size: 2em; margin-bottom: 15px;">
+        💝 SUPPORT THE CAUSE 💝
+      </h3>
+      <p style="color: #aaa; margin-bottom: 20px;">Help us maintain the world's most chaotic elevators!</p>
+      <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+        <button class="btn btn-secondary" onclick="donate(5)">☕ $5 - Buy Rick a Coffee</button>
+        <button class="btn btn-secondary" onclick="donate(15)">🦝 $15 - Feed a Raccoon</button>
+        <button class="btn btn-primary" onclick="donate(50)">🎪 $50 - Sponsor a Clown</button>
+        <button class="btn btn-warning" onclick="donate(100)">👻 $100 - Fund a Séance</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Summary -->
+  <div class="cart-summary" id="cartSummary" style="display: none;">
+    <h4>🛒 Your Cart (<span class="cart-count">0</span>)</h4>
+    <div id="cartItems"></div>
+    <div style="border-top: 1px solid var(--clown-purple); padding-top: 10px; margin-top: 10px;">
+      <strong style="color: var(--clown-cyan);">Total:</strong>
+      <span id="cartTotal" style="color: var(--clown-pink); font-family: 'Creepster', cursive; font-size: 1.3em;">$0.00</span>
+    </div>
+    <button class="btn btn-primary" style="width: 100%; margin-top: 15px;" onclick="checkout()">CHECKOUT</button>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="../">Home</a>
+      <a href="./">Shop</a>
+      <a href="../certification/">Certification</a>
+      <a href="../careers/">Careers</a>
+      <a href="../union/">Union 404</a>
+      <a href="../pages/privacy.html">Privacy</a>
+      <a href="../pages/terms.html">Terms of Chaos</a>
+    </div>
+    <p class="footer-text">© 2069 Assclown Elevators, LLC. All rights reversed. <span>Union Local 404</span> approved.</p>
+  </footer>
+
+  <script>
+    const products = [
+      { id: 1, name: "ClownGrease™ Premium Lubricant", desc: "Our proprietary formula. May cause spontaneous honking.", price: 42.00, icon: "🧴", category: "supplies", badges: ["bestseller"] },
+      { id: 2, name: "Load-Bearing Duct Tape (100yd)", desc: "Certified for structural use by Inspector Rick.", price: 19.99, icon: "🩹", category: "safety", badges: ["bestseller"] },
+      { id: 3, name: "Clown Nose Button Kit (Set of 13)", desc: "Replace boring buttons with honking goodness.", price: 33.33, icon: "🔴", category: "supplies", badges: ["new"] },
+      { id: 4, name: "Assclown Certified T-Shirt", desc: "Let everyone know you're qualified for chaos.", price: 29.99, icon: "👕", category: "apparel", badges: [] },
+      { id: 5, name: "Raccoon Adoption Certificate", desc: "Adopt your own overhead panel tenant!", price: 55.00, icon: "🦝", category: "raccoon", badges: ["raccoon"] },
+      { id: 6, name: "Rick's Guide to Safety Violations", desc: "404 pages of questionable wisdom.", price: 24.99, icon: "📖", category: "supplies", badges: ["haunted"] },
+      { id: 7, name: "Haunted Clipboard", desc: "Inspections auto-approve at midnight.", price: 66.66, icon: "📋", category: "haunted", badges: ["haunted"] },
+      { id: 8, name: "Emergency Honk Horn", desc: "For when the elevator bell just isn't enough.", price: 15.99, icon: "📯", category: "safety", badges: [] },
+      { id: 9, name: "Sub-basement 13A Access Keycard", desc: "WARNING: We're not responsible for what you find.", price: 404.00, icon: "🗝️", category: "haunted", badges: ["haunted"] },
+      { id: 10, name: "Union Local 404 Membership Card", desc: "Slightly haunted. Very prestigious.", price: 69.00, icon: "🪪", category: "supplies", badges: ["new"] },
+      { id: 11, name: "Clown Technician Hard Hat", desc: "Rainbow striped. OSHA-adjacent.", price: 45.00, icon: "⛑️", category: "safety", badges: [] },
+      { id: 12, name: "Raccoon Food (5lb bag)", desc: "Keep your overhead tenants happy!", price: 12.99, icon: "🥫", category: "raccoon", badges: ["raccoon"] },
+      { id: 13, name: "Ghost Detection Flashlight", desc: "Flickers when paranormal activity is near.", price: 39.99, icon: "🔦", category: "haunted", badges: ["haunted"] },
+      { id: 14, name: "Sideways Motion Enabler", desc: "Unlock diagonal elevator movement.", price: 808.00, icon: "↗️", category: "supplies", badges: ["new"] },
+      { id: 15, name: "Rick Séance Kit", desc: "Summon Inspector Rick for consultations.", price: 99.99, icon: "🕯️", category: "haunted", badges: ["haunted"] },
+      { id: 16, name: "Assclown Hoodie (Glow-in-dark)", desc: "Glows near elevator shafts. We don't know why.", price: 59.99, icon: "🧥", category: "apparel", badges: ["new"] },
+    ];
+
+    let currentFilter = 'all';
+
+    function renderProducts() {
+      const grid = document.getElementById('productGrid');
+      grid.innerHTML = '';
+
+      const filtered = currentFilter === 'all'
+        ? products
+        : products.filter(p => p.category === currentFilter || p.badges.includes(currentFilter));
+
+      filtered.forEach(product => {
+        const badgesHtml = product.badges.map(b => `<span class="badge badge-${b}">${b.toUpperCase()}</span>`).join('');
+
+        grid.innerHTML += `
+          <div class="product-card" data-category="${product.category}">
+            <div class="product-image">${product.icon}</div>
+            <div class="product-info">
+              <h3 class="product-name">${product.name}</h3>
+              <div class="product-badges">${badgesHtml}</div>
+              <p class="product-desc">${product.desc}</p>
+              <div class="product-price">$${product.price.toFixed(2)}</div>
+              <button class="btn btn-primary" style="width: 100%;" onclick="addProductToCart(${product.id})">
+                🛒 ADD TO CART
+              </button>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function filterProducts(category) {
+      currentFilter = category;
+      document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+      renderProducts();
+    }
+
+    function addProductToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      if (product) {
+        addToCart({ id: product.id, name: product.name, price: product.price });
+        updateCartDisplay();
+      }
+    }
+
+    function addBundleToCart() {
+      addToCart({ id: 'bundle', name: 'Complete Starter Kit', price: 99.69 });
+      updateCartDisplay();
+      showToast('🎪 Starter Kit added! You\'re on your way to chaos!', 'success');
+    }
+
+    function updateCartDisplay() {
+      const summary = document.getElementById('cartSummary');
+      const items = document.getElementById('cartItems');
+      const total = document.getElementById('cartTotal');
+
+      if (cart.length > 0) {
+        summary.style.display = 'block';
+        items.innerHTML = cart.map((item, i) => `
+          <div style="display: flex; justify-content: space-between; margin: 5px 0; font-size: 0.9em;">
+            <span>${item.name}</span>
+            <span style="color: var(--clown-pink);">$${item.price.toFixed(2)}</span>
+          </div>
+        `).join('');
+        total.textContent = '$' + getCartTotal().toFixed(2);
+      } else {
+        summary.style.display = 'none';
+      }
+    }
+
+    function checkout() {
+      showToast('🤡 Payment raccoons are processing... Please hold.', 'info');
+      setTimeout(() => {
+        showToast('👻 Rick says: "' + getRandomRickQuote() + '"', 'info', 5000);
+      }, 2000);
+    }
+
+    function donate(amount) {
+      showToast(`💝 Thank you for your $${amount} donation! Rick is grateful.`, 'success');
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      renderProducts();
+      updateCartDisplay();
+      trackPageVisit('shop');
+    });
+  </script>
+</body>
+</html>

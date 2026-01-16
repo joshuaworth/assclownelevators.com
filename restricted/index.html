@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>⚠️ RESTRICTED AREA - Sub-basement 13A | CLASSIFIED</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/main.js" defer></script>
+  <style>
+    body {
+      background: #050505;
+    }
+    .restricted-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(139, 0, 0, 0.95);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      transition: opacity 1s ease-out;
+    }
+    .restricted-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .warning-icon {
+      font-size: 8em;
+      animation: warningPulse 1s ease-in-out infinite;
+    }
+    @keyframes warningPulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.8; }
+    }
+    .warning-text {
+      font-family: 'Creepster', cursive;
+      font-size: 3em;
+      color: var(--clown-yellow);
+      text-shadow: 0 0 30px var(--clown-yellow);
+      margin: 30px 0;
+      text-align: center;
+    }
+    .access-form {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 30px;
+      border-radius: 15px;
+      text-align: center;
+    }
+    .access-input {
+      padding: 15px 25px;
+      font-size: 1.2em;
+      background: #000;
+      border: 2px solid var(--clown-red);
+      color: var(--clown-yellow);
+      border-radius: 10px;
+      font-family: 'VT323', monospace;
+      text-align: center;
+      width: 250px;
+    }
+    .main-content {
+      filter: blur(10px);
+      transition: filter 1s ease-out;
+    }
+    .main-content.unlocked {
+      filter: none;
+    }
+    .classified-header {
+      background: repeating-linear-gradient(
+        45deg,
+        #1a0000,
+        #1a0000 10px,
+        #0a0000 10px,
+        #0a0000 20px
+      );
+      border: 4px solid var(--clown-red);
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+    }
+    .classified-stamp {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      transform: rotate(15deg);
+      border: 4px solid var(--clown-red);
+      padding: 10px 20px;
+      font-family: 'Bangers', cursive;
+      font-size: 1.5em;
+      color: var(--clown-red);
+      opacity: 0.8;
+    }
+    .file-container {
+      background: #0a0a0a;
+      border: 2px dashed var(--clown-red);
+      border-radius: 0;
+      padding: 30px;
+      margin: 30px 0;
+      font-family: 'Special Elite', cursive;
+    }
+    .file-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--clown-red);
+      padding-bottom: 15px;
+      margin-bottom: 20px;
+    }
+    .file-stamp {
+      color: var(--clown-red);
+      font-family: 'Bangers', cursive;
+    }
+    .incident-log {
+      background: #000;
+      border: 1px solid var(--clown-green);
+      padding: 20px;
+      font-family: 'VT323', monospace;
+      color: var(--clown-green);
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .log-entry {
+      margin: 10px 0;
+      padding: 5px 0;
+      border-bottom: 1px dashed rgba(57, 255, 20, 0.2);
+    }
+    .log-time {
+      color: var(--clown-cyan);
+    }
+    .log-critical {
+      color: var(--clown-red);
+      animation: textFlicker 0.5s infinite;
+    }
+    @keyframes textFlicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    .entity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .entity-card {
+      background: #0a0000;
+      border: 2px solid var(--clown-red);
+      border-radius: 10px;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    .entity-card::before {
+      content: 'CLASSIFIED';
+      position: absolute;
+      top: 10px;
+      right: -30px;
+      background: var(--clown-red);
+      color: white;
+      padding: 5px 40px;
+      font-size: 0.7em;
+      transform: rotate(45deg);
+    }
+    .entity-image {
+      width: 100%;
+      height: 150px;
+      background: linear-gradient(135deg, #1a0a0a, #0a0a1a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4em;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+    .threat-level {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 5px;
+      font-size: 0.85em;
+      font-family: 'Bangers', cursive;
+    }
+    .threat-keter { background: var(--clown-red); color: white; }
+    .threat-euclid { background: var(--warning-orange); color: white; }
+    .threat-safe { background: var(--clown-green); color: black; }
+    .threat-honk { background: var(--clown-yellow); color: black; }
+    .audio-log {
+      background: #0a0a0a;
+      border: 2px solid var(--clown-purple);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+    .audio-waveform {
+      height: 60px;
+      background: linear-gradient(90deg,
+        transparent 0%, var(--clown-purple) 10%, transparent 20%,
+        var(--clown-purple) 30%, transparent 40%, var(--clown-purple) 50%,
+        transparent 60%, var(--clown-purple) 70%, transparent 80%,
+        var(--clown-purple) 90%, transparent 100%
+      );
+      background-size: 200% 100%;
+      animation: waveMove 2s linear infinite;
+      border-radius: 5px;
+      margin: 15px 0;
+    }
+    @keyframes waveMove {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 200% 0%; }
+    }
+    .glitch-text {
+      animation: glitchText 0.3s infinite;
+    }
+    @keyframes glitchText {
+      0% { text-shadow: 2px 0 var(--clown-red), -2px 0 var(--clown-cyan); }
+      25% { text-shadow: -2px 0 var(--clown-red), 2px 0 var(--clown-cyan); }
+      50% { text-shadow: 2px 2px var(--clown-red), -2px -2px var(--clown-cyan); }
+      75% { text-shadow: -2px -2px var(--clown-red), 2px 2px var(--clown-cyan); }
+      100% { text-shadow: 2px 0 var(--clown-red), -2px 0 var(--clown-cyan); }
+    }
+    .countdown {
+      font-family: 'VT323', monospace;
+      font-size: 3em;
+      color: var(--clown-red);
+      text-align: center;
+      margin: 30px 0;
+    }
+    .hidden-message {
+      color: #0a0a0a;
+      background: #0a0a0a;
+      cursor: pointer;
+      transition: all 0.3s;
+      padding: 2px 5px;
+    }
+    .hidden-message:hover {
+      color: var(--clown-red);
+      background: transparent;
+    }
+  </style>
+</head>
+<body>
+  <!-- Access Restriction Overlay -->
+  <div class="restricted-overlay" id="accessOverlay">
+    <div class="warning-icon">⚠️</div>
+    <div class="warning-text">RESTRICTED AREA</div>
+    <p style="color: #ddd; text-align: center; max-width: 500px; margin-bottom: 30px;">
+      Sub-basement 13A contains classified information about paranormal elevator incidents,
+      entity containment protocols, and <span class="redacted">REDACTED</span> procedures.
+    </p>
+    <div class="access-form">
+      <p style="color: var(--clown-yellow); margin-bottom: 15px;">ENTER ACCESS CODE:</p>
+      <input type="password" class="access-input" id="accessCode" placeholder="••••••••" maxlength="8">
+      <br><br>
+      <button class="btn btn-warning" onclick="checkAccess()">VERIFY ACCESS</button>
+      <p style="color: #666; font-size: 0.85em; margin-top: 15px;">
+        Hint: What floor doesn't exist? (No numbers, just the word)
+      </p>
+      <p style="color: #444; font-size: 0.75em; margin-top: 10px;">
+        Or just click <a href="#" onclick="bypassAccess()" style="color: var(--clown-cyan);">here</a> if Rick sent you.
+      </p>
+    </div>
+  </div>
+
+  <nav class="site-nav">
+    <a href="../" class="nav-logo">🤡 ASSCLOWN ELEVATORS 🛗</a>
+    <ul class="nav-menu">
+      <li><a href="../">Home</a></li>
+      <li><a href="../shop/">Shop</a></li>
+      <li><a href="../violations/">Violations</a></li>
+      <li><a href="../certification/">Certification</a></li>
+      <li><a href="../careers/">Careers</a></li>
+      <li><a href="../union/">Union 404</a></li>
+      <li><a href="./" style="color: var(--clown-red);">⚠️ RESTRICTED</a></li>
+    </ul>
+  </nav>
+
+  <div class="main-content" id="mainContent">
+    <header class="classified-header">
+      <div class="classified-stamp">TOP SECRET</div>
+      <h1 class="page-title glitch-text">SUB-BASEMENT 13A</h1>
+      <p class="page-subtitle" style="color: var(--clown-red);">CLASSIFIED ARCHIVES</p>
+      <p style="color: #888; margin-top: 20px;">
+        Clearance Level: <span style="color: var(--clown-red);">HONK-5</span> Required
+      </p>
+    </header>
+
+    <div class="warning-tape">
+      ⚠️ AUTHORIZED PERSONNEL ONLY ⚠️ CONTAINMENT PROTOCOLS IN EFFECT ⚠️ AUTHORIZED PERSONNEL ONLY ⚠️
+    </div>
+
+    <div class="content-wrapper">
+      <!-- Countdown -->
+      <div class="countdown">
+        TIME UNTIL NEXT INCIDENT: <span id="incidentCountdown">--:--:--</span>
+      </div>
+
+      <!-- Welcome File -->
+      <div class="file-container">
+        <div class="file-header">
+          <span style="color: var(--clown-yellow);">FILE: SB13A-WELCOME-001</span>
+          <span class="file-stamp">DECLASSIFIED: 2023</span>
+        </div>
+        <p style="color: #aaa; line-height: 1.8;">
+          Welcome to Sub-basement 13A, the deepest level of Assclown Elevators' operational facility.
+          This floor exists in a state of <span class="hidden-message">quantum superposition</span> and
+          may or may not be accessible depending on the current phase of the moon, Inspector Rick's mood,
+          and whether the raccoons have completed their daily rituals.
+        </p>
+        <p style="color: #aaa; line-height: 1.8; margin-top: 15px;">
+          The following documents contain information about <span class="hidden-message">entities</span>,
+          <span class="hidden-message">incidents</span>, and <span class="hidden-message">containment failures</span>
+          that have occurred within our elevator network. Reading these files may cause
+          <span class="hidden-message">existential dread</span>, <span class="hidden-message">sideways thinking</span>,
+          or <span class="hidden-message">spontaneous honking</span>.
+        </p>
+        <p style="color: var(--clown-red); margin-top: 20px; font-family: 'Bangers', cursive;">
+          YOU HAVE BEEN WARNED.
+        </p>
+      </div>
+
+      <!-- Entity Database -->
+      <section class="content-section" style="background: #0a0000; border-color: var(--clown-red);">
+        <h2 class="section-title" style="color: var(--clown-red);">👁️ ENTITY DATABASE</h2>
+        <p style="color: #888; margin-bottom: 30px;">
+          Known paranormal entities encountered within the elevator network. Approach with caution.
+        </p>
+
+        <div class="entity-grid">
+          <div class="entity-card">
+            <div class="entity-image">👻</div>
+            <h3 style="color: var(--clown-yellow); font-family: 'Bangers', cursive;">INSPECTOR RICK</h3>
+            <span class="threat-level threat-safe">SAFE</span>
+            <p style="color: #aaa; margin-top: 10px; font-size: 0.95em;">
+              Deceased safety inspector. Generally helpful. Approves everything.
+              Manifests during inspections. Communicates via disappointed sighs.
+            </p>
+            <p style="color: #666; font-size: 0.85em; margin-top: 10px;">
+              <strong>Status:</strong> Cooperative<br>
+              <strong>Last Sighting:</strong> Everywhere, constantly
+            </p>
+          </div>
+
+          <div class="entity-card">
+            <div class="entity-image">🤡</div>
+            <h3 style="color: var(--clown-yellow); font-family: 'Bangers', cursive;">THE CLOWN KING</h3>
+            <span class="threat-level threat-keter">KETER</span>
+            <p style="color: #aaa; margin-top: 10px; font-size: 0.95em;">
+              Summoned by pressing all elevator buttons simultaneously.
+              Do NOT make eye contact. Do NOT accept balloon animals.
+            </p>
+            <p style="color: #666; font-size: 0.85em; margin-top: 10px;">
+              <strong>Status:</strong> Contained (mostly)<br>
+              <strong>Last Sighting:</strong> <span class="redacted">REDACTED</span>
+            </p>
+          </div>
+
+          <div class="entity-card">
+            <div class="entity-image">🦝</div>
+            <h3 style="color: var(--clown-yellow); font-family: 'Bangers', cursive;">THE RACCOON COLLECTIVE</h3>
+            <span class="threat-level threat-euclid">EUCLID</span>
+            <p style="color: #aaa; margin-top: 10px; font-size: 0.95em;">
+              Hive-mind entity occupying overhead panels. Has formed government.
+              Controls most facility operations. Feed regularly to maintain peace.
+            </p>
+            <p style="color: #666; font-size: 0.85em; margin-top: 10px;">
+              <strong>Status:</strong> In Control<br>
+              <strong>Population:</strong> Unknown (growing)
+            </p>
+          </div>
+
+          <div class="entity-card">
+            <div class="entity-image">🛗</div>
+            <h3 style="color: var(--clown-yellow); font-family: 'Bangers', cursive;">ELEVATOR 13</h3>
+            <span class="threat-level threat-keter">KETER</span>
+            <p style="color: #aaa; margin-top: 10px; font-size: 0.95em;">
+              Sentient elevator. Moves between dimensions. Passengers may exit
+              in different time periods. Sometimes arrives before called.
+            </p>
+            <p style="color: #666; font-size: 0.85em; margin-top: 10px;">
+              <strong>Status:</strong> "Operational"<br>
+              <strong>Missing Passengers:</strong> 47 (this timeline)
+            </p>
+          </div>
+
+          <div class="entity-card">
+            <div class="entity-image">🎵</div>
+            <h3 style="color: var(--clown-yellow); font-family: 'Bangers', cursive;">THE MUSIC</h3>
+            <span class="threat-level threat-honk">HONK</span>
+            <p style="color: #aaa; margin-top: 10px; font-size: 0.95em;">
+              "Entry of the Gladiators" has achieved sentience. Cannot be stopped.
+              Plays even when systems are off. Growing louder each year.
+            </p>
+            <p style="color: #666; font-size: 0.85em; margin-top: 10px;">
+              <strong>Status:</strong> Eternal<br>
+              <strong>Current Volume:</strong> INCREASING
+            </p>
+          </div>
+
+          <div class="entity-card">
+            <div class="entity-image">❓</div>
+            <h3 style="color: var(--clown-yellow); font-family: 'Bangers', cursive;">[REDACTED]</h3>
+            <span class="threat-level threat-keter">KETER</span>
+            <p style="color: #aaa; margin-top: 10px; font-size: 0.95em;">
+              <span class="redacted">INFORMATION EXPUNGED</span>
+              <span class="redacted">DO NOT INVESTIGATE</span>
+              <span class="redacted">FORGET YOU READ THIS</span>
+            </p>
+            <p style="color: #666; font-size: 0.85em; margin-top: 10px;">
+              <strong>Status:</strong> <span class="redacted">REDACTED</span><br>
+              <strong>Notes:</strong> It knows you're reading this.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Incident Log -->
+      <section class="content-section" style="background: #000; border-color: var(--clown-green);">
+        <h2 class="section-title" style="color: var(--clown-green);">📟 LIVE INCIDENT LOG</h2>
+        <div class="incident-log" id="incidentLog">
+          <!-- Populated by JS -->
+        </div>
+      </section>
+
+      <!-- Audio Logs -->
+      <section class="content-section" style="background: #0a0a0a; border-color: var(--clown-purple);">
+        <h2 class="section-title" style="color: var(--clown-purple);">🎙️ RECOVERED AUDIO LOGS</h2>
+
+        <div class="audio-log">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="color: var(--clown-yellow);">AUDIO-001: "Rick's Last Recording"</span>
+            <span style="color: #666;">Duration: 2:34</span>
+          </div>
+          <div class="audio-waveform"></div>
+          <p style="color: #888; font-style: italic; font-size: 0.95em;">
+            "The elevator... it's moving sideways again. I don't think we're in Kansas anymore.
+            Tell the raccoons I— [STATIC] —the clown grease, it's everywhere— [HONKING] —
+            it's fine. Everything is fine. DING!"
+          </p>
+          <button class="btn btn-ghost" style="margin-top: 15px;" onclick="playAudio()">▶️ PLAY</button>
+        </div>
+
+        <div class="audio-log">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="color: var(--clown-yellow);">AUDIO-007: "The Honking"</span>
+            <span style="color: #666;">Duration: ∞</span>
+          </div>
+          <div class="audio-waveform"></div>
+          <p style="color: #888; font-style: italic; font-size: 0.95em;">
+            [CONTINUOUS HONKING FOR ETERNITY]
+          </p>
+          <button class="btn btn-ghost" style="margin-top: 15px;" onclick="showToast('Audio corrupted. The honking continues.', 'error')">▶️ PLAY</button>
+        </div>
+
+        <div class="audio-log">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="color: var(--clown-yellow);">AUDIO-013: "Floor 13 Recording"</span>
+            <span style="color: #666;">Duration: -3:00</span>
+          </div>
+          <div class="audio-waveform"></div>
+          <p style="color: #888; font-style: italic; font-size: 0.95em;">
+            [Recording appears to play backwards] "...ereht er'uoy ,ih ...ereht er'uoy ,ih ...ereht er'uoy ,ih"
+          </p>
+          <button class="btn btn-ghost" style="margin-top: 15px;" onclick="showToast('WARNING: Audio contains memetic hazard. Playback denied.', 'error')">▶️ PLAY</button>
+        </div>
+      </section>
+
+      <!-- Secret Documents -->
+      <section class="file-container">
+        <div class="file-header">
+          <span style="color: var(--clown-red);">DOCUMENT: PROTOCOL-OMEGA-HONK</span>
+          <span class="file-stamp">EYES ONLY</span>
+        </div>
+        <h3 style="color: var(--clown-yellow); font-family: 'Bangers', cursive; margin-bottom: 15px;">
+          EMERGENCY CONTAINMENT PROCEDURES
+        </h3>
+        <ol style="color: #aaa; line-height: 2; margin-left: 20px;">
+          <li>If Elevator 13 begins moving between dimensions, <strong style="color: var(--clown-red);">do not attempt to board</strong>.</li>
+          <li>If the Clown King manifests, initiate Protocol Honk: all personnel must honk simultaneously.</li>
+          <li>Feed the Raccoon Collective every 4 hours. They become <span class="redacted">AGGRESSIVE</span> when hungry.</li>
+          <li>If "Entry of the Gladiators" exceeds 120 decibels, evacuate to Sub-basement 14A (does not exist).</li>
+          <li>In case of total containment failure, say "Rick" three times and accept your fate.</li>
+        </ol>
+        <p style="color: var(--clown-red); margin-top: 20px; text-align: center; font-family: 'Creepster', cursive; font-size: 1.5em;">
+          REMEMBER: IT'S FINE. EVERYTHING IS FINE.
+        </p>
+      </section>
+
+      <!-- Exit Warning -->
+      <div class="alert alert-danger" style="text-align: center; margin-top: 40px;">
+        <h3 style="font-family: 'Creepster', cursive; font-size: 2em; margin-bottom: 15px;">⚠️ EXIT NOTICE ⚠️</h3>
+        <p>By accessing Sub-basement 13A, you have acknowledged that:</p>
+        <ul style="list-style: none; margin: 20px 0;">
+          <li>• Your soul may be used for elevator-related purposes</li>
+          <li>• Time may not function normally upon exit</li>
+          <li>• You may experience spontaneous honking for up to 72 hours</li>
+          <li>• The raccoons now know your name</li>
+          <li>• Inspector Rick will be watching</li>
+        </ul>
+        <button class="btn btn-warning" onclick="attemptExit()">🚪 ATTEMPT TO EXIT</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-links">
+      <a href="../">Home</a>
+      <a href="../shop/">Shop</a>
+      <a href="../certification/">Certification</a>
+      <a href="../careers/">Careers</a>
+      <a href="../union/">Union 404</a>
+    </div>
+    <p class="footer-text">© 2069 Assclown Elevators, LLC. <span style="color: var(--clown-red);">CLASSIFIED</span></p>
+  </footer>
+
+  <script>
+    // Access control
+    function checkAccess() {
+      const code = document.getElementById('accessCode').value.toLowerCase();
+      if (code === 'thirteen' || code === '13' || code === 'honk' || code === 'rick') {
+        grantAccess();
+      } else {
+        showToast('ACCESS DENIED. Rick is disappointed.', 'error');
+        document.getElementById('accessCode').value = '';
+      }
+    }
+
+    function bypassAccess() {
+      showToast('Rick vouches for you. Access granted.', 'success');
+      grantAccess();
+    }
+
+    function grantAccess() {
+      document.getElementById('accessOverlay').classList.add('hidden');
+      document.getElementById('mainContent').classList.add('unlocked');
+      localStorage.setItem('sb13a_access', 'granted');
+      startIncidentLog();
+    }
+
+    // Check if already has access
+    if (localStorage.getItem('sb13a_access') === 'granted') {
+      document.getElementById('accessOverlay').classList.add('hidden');
+      document.getElementById('mainContent').classList.add('unlocked');
+    }
+
+    // Enter key for access code
+    document.getElementById('accessCode').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') checkAccess();
+    });
+
+    // Incident log generator
+    const incidentTypes = [
+      { type: 'INFO', text: 'Elevator 7 operating normally (suspicious)' },
+      { type: 'WARN', text: 'Raccoon activity detected in Shaft B overhead panel' },
+      { type: 'CRITICAL', text: 'Elevator 13 attempting dimensional shift' },
+      { type: 'INFO', text: 'ClownGrease™ levels optimal in all shafts' },
+      { type: 'WARN', text: 'Floor 13 button pressed. Monitoring...' },
+      { type: 'INFO', text: 'Rick performed routine inspection (posthumously)' },
+      { type: 'CRITICAL', text: 'HONKING DETECTED IN SECTOR 7' },
+      { type: 'WARN', text: 'Duct tape structural integrity at 17%' },
+      { type: 'INFO', text: '"Entry of the Gladiators" volume stable at 87dB' },
+      { type: 'CRITICAL', text: 'Elevator moving sideways. This is not a drill.' },
+      { type: 'WARN', text: 'The Clown King containment field fluctuating' },
+      { type: 'INFO', text: 'Séance scheduled for 03:00 - all spirits invited' },
+      { type: 'CRITICAL', text: 'ENTITY DETECTED IN SHAFT C - AVOID' },
+      { type: 'WARN', text: 'Passenger reported seeing own reflection waving' },
+      { type: 'INFO', text: 'Raccoon HR requests additional snack budget' },
+    ];
+
+    function startIncidentLog() {
+      const log = document.getElementById('incidentLog');
+
+      // Initial entries
+      for (let i = 0; i < 10; i++) {
+        addLogEntry();
+      }
+
+      // Add new entries periodically
+      setInterval(addLogEntry, 3000);
+    }
+
+    function addLogEntry() {
+      const log = document.getElementById('incidentLog');
+      const incident = incidentTypes[Math.floor(Math.random() * incidentTypes.length)];
+      const time = new Date().toLocaleTimeString();
+
+      const entry = document.createElement('div');
+      entry.className = 'log-entry';
+      entry.innerHTML = `
+        <span class="log-time">[${time}]</span>
+        <span class="${incident.type === 'CRITICAL' ? 'log-critical' : ''}">[${incident.type}]</span>
+        ${incident.text}
+      `;
+
+      log.insertBefore(entry, log.firstChild);
+
+      // Keep only last 50 entries
+      while (log.children.length > 50) {
+        log.removeChild(log.lastChild);
+      }
+    }
+
+    // Countdown timer
+    function updateCountdown() {
+      const now = new Date();
+      const midnight = new Date(now);
+      midnight.setHours(24, 0, 0, 0);
+      const diff = midnight - now;
+
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('incidentCountdown').textContent =
+        `${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    function playAudio() {
+      showToast('👻 Rick\'s voice echoes: "' + getRandomRickQuote() + '"', 'info', 5000);
+    }
+
+    function attemptExit() {
+      showToast('🚪 Exit attempt logged. The door does not respond.', 'error');
+      setTimeout(() => {
+        showToast('🦝 The raccoons suggest using the service elevator.', 'info');
+      }, 2000);
+      setTimeout(() => {
+        showToast('👻 Rick sighs: "Just use the stairs. Oh wait..."', 'info');
+      }, 4000);
+    }
+
+    // Start incident log if access was previously granted
+    if (localStorage.getItem('sb13a_access') === 'granted') {
+      startIncidentLog();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      trackPageVisit('restricted');
+    });
+  </script>
+</body>
+</html>
