@@ -515,10 +515,19 @@
     }
 
     function enroll(tier) {
-      showToast(`🎓 Enrolling in ${tier.toUpperCase()} tier... Payment raccoons are processing!`, 'success');
-      setTimeout(() => {
-        showToast('👻 Rick approves your enrollment! Check your email (or the spirit realm).', 'info', 5000);
-      }, 2000);
+      if (tier === 'professional') {
+        showToast('🎓 Redirecting to secure payment...', 'success');
+        setTimeout(() => {
+          window.location.href = 'https://buy.stripe.com/6oUfZi9EK4R5fAee3PaAw01';
+        }, 500);
+      } else if (tier === 'basic') {
+        showToast('🤡 Basic tier is FREE! Check your email for access.', 'success');
+        setTimeout(() => {
+          showToast('👻 Rick has enrolled you! Welcome to the chaos.', 'info', 5000);
+        }, 2000);
+      } else if (tier === 'master') {
+        showToast('🦝 Master tier requires a séance with Rick. Contact us at midnight.', 'info', 5000);
+      }
     }
 
     // Check for returning students
