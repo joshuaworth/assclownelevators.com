@@ -306,22 +306,18 @@
 
   <script>
     const products = [
-      { id: 1, name: "ClownGrease™ Premium Lubricant", desc: "Our proprietary formula. May cause spontaneous honking.", price: 42.00, icon: "🧴", category: "supplies", badges: ["bestseller"] },
-      { id: 2, name: "Load-Bearing Duct Tape (100yd)", desc: "Certified for structural use by Inspector Rick.", price: 19.99, icon: "🩹", category: "safety", badges: ["bestseller"] },
-      { id: 3, name: "Clown Nose Button Kit (Set of 13)", desc: "Replace boring buttons with honking goodness.", price: 33.33, icon: "🔴", category: "supplies", badges: ["new"] },
-      { id: 4, name: "Assclown Certified T-Shirt", desc: "Let everyone know you're qualified for chaos.", price: 29.99, icon: "👕", category: "apparel", badges: [] },
-      { id: 5, name: "Raccoon Adoption Certificate", desc: "Adopt your own overhead panel tenant!", price: 55.00, icon: "🦝", category: "raccoon", badges: ["raccoon"] },
-      { id: 6, name: "Rick's Guide to Safety Violations", desc: "404 pages of questionable wisdom.", price: 24.99, icon: "📖", category: "supplies", badges: ["haunted"] },
-      { id: 7, name: "Haunted Clipboard", desc: "Inspections auto-approve at midnight.", price: 66.66, icon: "📋", category: "haunted", badges: ["haunted"] },
-      { id: 8, name: "Emergency Honk Horn", desc: "For when the elevator bell just isn't enough.", price: 15.99, icon: "📯", category: "safety", badges: [] },
-      { id: 9, name: "Sub-basement 13A Access Keycard", desc: "WARNING: We're not responsible for what you find.", price: 404.00, icon: "🗝️", category: "haunted", badges: ["haunted"] },
-      { id: 10, name: "Union Local 404 Membership Card", desc: "Slightly haunted. Very prestigious.", price: 69.00, icon: "🪪", category: "supplies", badges: ["new"] },
-      { id: 11, name: "Clown Technician Hard Hat", desc: "Rainbow striped. OSHA-adjacent.", price: 45.00, icon: "⛑️", category: "safety", badges: [] },
-      { id: 12, name: "Raccoon Food (5lb bag)", desc: "Keep your overhead tenants happy!", price: 12.99, icon: "🥫", category: "raccoon", badges: ["raccoon"] },
-      { id: 13, name: "Ghost Detection Flashlight", desc: "Flickers when paranormal activity is near.", price: 39.99, icon: "🔦", category: "haunted", badges: ["haunted"] },
-      { id: 14, name: "Sideways Motion Enabler", desc: "Unlock diagonal elevator movement.", price: 808.00, icon: "↗️", category: "supplies", badges: ["new"] },
-      { id: 15, name: "Rick Séance Kit", desc: "Summon Inspector Rick for consultations.", price: 99.99, icon: "🕯️", category: "haunted", badges: ["haunted"] },
-      { id: 16, name: "Assclown Hoodie (Glow-in-dark)", desc: "Glows near elevator shafts. We don't know why.", price: 59.99, icon: "🧥", category: "apparel", badges: ["new"] },
+      { id: 1, name: "ClownGrease™ Premium Lubricant", desc: "Our proprietary formula. May cause spontaneous honking. 16oz can.", price: 29.69, icon: "🧴", category: "supplies", badges: ["bestseller"], paymentUrl: "https://buy.stripe.com/00w14o04afvJ73I0cZaAw03" },
+      { id: 2, name: "Premium Clown-Grade Duct Tape", desc: "Industrial strength. Raccoon approved. Holds elevators together since 1969. 100ft roll.", price: 19.69, icon: "🩹", category: "safety", badges: ["bestseller"], paymentUrl: "https://buy.stripe.com/6oU5kEaIO2IXfAe1h3aAw02" },
+      { id: 3, name: "Custom OSHA Violation Certificate", desc: "Personalized with YOUR name. Great for office pranks. Instant PDF download.", price: 9.69, icon: "📜", category: "supplies", badges: ["new"], paymentUrl: "https://buy.stripe.com/4gM28s8AGfvJ9bQ6BnaAw09" },
+      { id: 4, name: "Official Assclown T-Shirt", desc: "100% cotton. Features the classic Assclown logo. Sizes S-3XL. Union made.", price: 34.69, icon: "👕", category: "apparel", badges: [], paymentUrl: "https://buy.stripe.com/fZu8wQg383N1bjY7FraAw07" },
+      { id: 5, name: "Raccoon Adoption Kit", desc: "Adopt your own overhead panel raccoon! Includes certificate, name tag, and feeding schedule.", price: 49.69, icon: "🦝", category: "raccoon", badges: ["raccoon"], paymentUrl: "https://buy.stripe.com/6oU5kE4kqfvJ0Fk4tfaAw04" },
+      { id: 6, name: "OSHA Violation Poster Set", desc: "10 beautifully framed digital violation posters. Print at home. Inspector Rick approved.", price: 24.69, icon: "🖼️", category: "supplies", badges: ["haunted"], paymentUrl: "https://buy.stripe.com/28E8wQ8AG0AP0Fke3PaAw05" },
+      { id: 7, name: "Inspector Rick Prayer Candle", desc: "Summon Rick's blessing upon your elevator. Digital download - print and wrap.", price: 14.69, icon: "🕯️", category: "haunted", badges: ["haunted"], paymentUrl: "https://buy.stripe.com/00wcN64kq6ZdewabVHaAw06" },
+      { id: 8, name: "I Survived Floor 13 Mug", desc: "Ceramic mug. 11oz. Dishwasher safe. Haunting not included.", price: 19.69, icon: "☕", category: "apparel", badges: [], paymentUrl: "https://buy.stripe.com/00w00k2ci6Zd1JobVHaAw08" },
+      { id: 9, name: "Assclown Certification Course", desc: "Full 69-minute certification. Become an official Assclown Elevator Technician!", price: 69.69, icon: "🎓", category: "supplies", badges: ["bestseller"], paymentUrl: "https://buy.stripe.com/6oUfZi9EK4R5fAee3PaAw01" },
+      { id: 10, name: "Union Local 404 Membership Card", desc: "Slightly haunted. Very prestigious. Digital download.", price: 69.00, icon: "🪪", category: "supplies", badges: ["new"], paymentUrl: null },
+      { id: 11, name: "Clown Technician Hard Hat", desc: "Rainbow striped. OSHA-adjacent. Coming soon!", price: 45.00, icon: "⛑️", category: "safety", badges: [], paymentUrl: null },
+      { id: 12, name: "Raccoon Food (5lb bag)", desc: "Keep your overhead tenants happy! Coming soon!", price: 12.99, icon: "🥫", category: "raccoon", badges: ["raccoon"], paymentUrl: null },
     ];
 
     let currentFilter = 'all';
@@ -337,6 +333,10 @@
       filtered.forEach(product => {
         const badgesHtml = product.badges.map(b => `<span class="badge badge-${b}">${b.toUpperCase()}</span>`).join('');
 
+        const buttonHtml = product.paymentUrl
+          ? `<button class="btn btn-primary" style="width: 100%;" onclick="buyProduct(${product.id})">💳 BUY NOW</button>`
+          : `<button class="btn btn-secondary" style="width: 100%;" disabled>🚧 COMING SOON</button>`;
+
         grid.innerHTML += `
           <div class="product-card" data-category="${product.category}">
             <div class="product-image">${product.icon}</div>
@@ -345,13 +345,21 @@
               <div class="product-badges">${badgesHtml}</div>
               <p class="product-desc">${product.desc}</p>
               <div class="product-price">$${product.price.toFixed(2)}</div>
-              <button class="btn btn-primary" style="width: 100%;" onclick="addProductToCart(${product.id})">
-                🛒 ADD TO CART
-              </button>
+              ${buttonHtml}
             </div>
           </div>
         `;
       });
+    }
+
+    function buyProduct(productId) {
+      const product = products.find(p => p.id === productId);
+      if (product && product.paymentUrl) {
+        showToast('💳 Redirecting to secure checkout...', 'success');
+        setTimeout(() => {
+          window.location.href = product.paymentUrl;
+        }, 500);
+      }
     }
 
     function filterProducts(category) {
